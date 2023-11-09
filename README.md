@@ -5,5 +5,8 @@
 You can access my Piscine exercises (up to c08) [here](https://github.com/rwintgen/42/tree/main/piscine_42). All the exercies done have passed the Moulinette and Norminette.
 
 ## Cursus
-#### Libft
+#### libft
 This is currently being worked on, but you can access it [here](https://github.com/rwintgen/42/tree/main/libft).
+
+#### ft_printf
+This is currently being worked on, but you can access it [here](https://github.com/rwintgen/42/tree/main/ft_printf).
