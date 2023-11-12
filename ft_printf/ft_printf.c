@@ -6,7 +6,7 @@
 /*   By: rwintgen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 10:53:31 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/11/09 18:36:20 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:27:05 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,35 +46,38 @@ int	main(void)
 
 	printf("==========CHAR==========\n\n");
 
-	printf("%d\n\n", printf("printf: %c\n", 'x'));
+	printf("%d\n\n", printf("   printf: %c\n", 'x'));
 	printf("%d\n\n", ft_printf("ft_printf: %c\n", 'x'));
 	printf("=========STRING=========\n\n");
 
-	printf("%d\n\n", printf("printf: %s\n", "giga teub"));
+	printf("%d\n\n", printf("   printf: %s\n", "giga teub"));
 	printf("%d\n\n", ft_printf("ft_printf: %s\n", "giga teub"));
 	printf("==========INT===========\n\n");
 
-	printf("%d\n\n", printf("printf: %d\n", -2147483647));
+	printf("%d\n\n", printf("   printf: %d\n", -2147483647));
 	printf("%d\n\n", ft_printf("ft_printf: %d\n", -2147483647));
+
+	printf("%d\n\n", printf("   printf: %i\n", -2147483647));
+	printf("%d\n\n", ft_printf("ft_printf: %i\n", -2147483647));
 	printf("======UNSIGNED INT======\n\n");
 
-	printf("%d\n\n", printf("printf: %u\n", -147483647));
+	printf("%d\n\n", printf("   printf: %u\n", -147483647));
 	printf("%d\n\n", ft_printf("ft_printf: %u\n", -147483647));
 	printf("==========HEXA==========\n\n");
 
-	printf("%d\n\n", printf("printf: %x\n", -147483647));
+	printf("%d\n\n", printf("   printf: %x\n", -147483647));
 	printf("%d\n\n", ft_printf("ft_printf: %x\n", -147483647));
 	printf("========HEXA MAJ========\n\n");
 	
-	printf("%d\n\n", printf("printf: %X\n", -1474987647));
+	printf("%d\n\n", printf("   printf: %X\n", -1474987647));
 	printf("%d\n\n", ft_printf("ft_printf: %X\n", -1474987647));
 	printf("=========PERCENT========\n\n");
 
-	printf("%d\n\n", printf("printf: %%\n"));
+	printf("%d\n\n", printf("   printf: %%\n"));
 	printf("%d\n\n", ft_printf("ft_printf: %%\n"));
 	printf("=========POINTER========\n\n");
 
-	printf("%d\n\n", printf("printf: %p\n", &str));
+	printf("%d\n\n", printf("   printf: %p\n", &str));
 	printf("%d\n\n", ft_printf("ft_printf: %p\n", &str));
 	printf("========================\n\n");
 
