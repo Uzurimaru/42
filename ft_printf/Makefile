@@ -6,7 +6,7 @@
 #    By: rwintgen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 10:53:09 by rwintgen          #+#    #+#              #
-#    Updated: 2023/11/12 12:16:47 by rwintgen         ###   ########.fr        #
+#    Updated: 2023/11/12 14:02:36 by rwintgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS	=	ft_format.c\
 			ft_printfstr.c\
 			ft_strlen.c
 
-OBJS	=	$(SRCS: .c=.o)
+OBJS	=	$(SRCS:.c=.o)
 
 LD		=	ar
 
