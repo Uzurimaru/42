@@ -6,7 +6,7 @@
 /*   By: rwintgen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:30:19 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/11/01 12:30:28 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/11/11 11:51:07 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,10 @@
 
 int	ft_isalnum(int c)
 {
-	return (ft_isdigit(c) || ft_isalpha(c));
+	if (ft_isdigit(c))
+		return (1);
+	else if (ft_isalpha(c))
+		return (1);
+	else
+		return (0);
 }

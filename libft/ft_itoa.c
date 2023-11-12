@@ -6,13 +6,13 @@
 /*   By: rwintgen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:26:37 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/11/07 13:10:55 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/11/12 12:53:42 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_intlen(long int n)
+static size_t	ft_intlen(long int n)
 {
 	size_t	size;
 
@@ -34,11 +34,9 @@ char	*ft_itoa(int n)
 {
 	char	*dest;
 	int		len;
-	int		sign;
 	long	ln;
 
 	ln = n;
-	sign = n;
 	len = ft_intlen(ln);
 	dest = malloc(sizeof(char) * (len + 1));
 	if (!dest)
@@ -53,7 +51,7 @@ char	*ft_itoa(int n)
 		ln = ln / 10;
 		len--;
 	}
-	if (sign < 0)
+	if (n < 0)
 		dest[0] = '-';
 	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: rwintgen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 16:47:24 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/11/07 13:12:03 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:15:49 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,21 @@ static size_t	ft_wordlen(const char *s, char c)
 	return (i);
 }
 
+static void	ft_freetab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (!tab)
+		return ;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
+
 static char	**ft_populate(const char *s, char c, char **dest, size_t size)
 {
 	size_t	i;
@@ -58,6 +73,11 @@ static char	**ft_populate(const char *s, char c, char **dest, size_t size)
 		while (s[i] && s[i] == c)
 			i++;
 		dest[d] = ft_substr(s, i, ft_wordlen(&s[i], c));
+		if (!dest[d])
+		{
+			ft_freetab(dest);
+			return (NULL);
+		}
 		while (s[i] && s[i] != c)
 			i++;
 		d++;

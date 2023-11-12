@@ -6,7 +6,7 @@
 #    By: rwintgen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:30:27 by rwintgen          #+#    #+#              #
-#    Updated: 2023/11/07 13:02:34 by rwintgen         ###   ########.fr        #
+#    Updated: 2023/11/11 15:48:04 by rwintgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,3 +87,5 @@ fclean:		clean
 		${RM} ${NAME}
 
 re:			fclean all
+
+.PHONY:	all clean fclean re bonus
