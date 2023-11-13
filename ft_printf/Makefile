@@ -22,7 +22,6 @@ SRCS	=	ft_format.c\
 			ft_printfnbr.c\
 			ft_printfnbrhex.c\
 			ft_printfnbru.c\
-			ft_printfpercent.c\
 			ft_printfptr.c\
 			ft_printfstr.c\
 			ft_strlen.c
