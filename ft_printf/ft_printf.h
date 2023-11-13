@@ -19,7 +19,6 @@
 int	ft_printf(const char *str, ...);
 int	ft_format(char c, va_list ap);
 int	ft_printfchar(int c);
-int	ft_printfpercent(int c);
 int	ft_printfstr(char *str);
 int	ft_printfnbr(int n, char *base);
 int	ft_strlen(char *str);
