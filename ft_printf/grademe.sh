@@ -1,3 +1,3 @@
 #!/bin/bash
-clear && clang -Wall -Wextra -Werror *.c && ./a.out && rm -f a.out
 
+clear && clang -Wall -Wextra -Werror *.c && ./a.out && rm a.out

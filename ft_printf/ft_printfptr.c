@@ -6,26 +6,26 @@
 /*   By: rwintgen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:08:09 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/11/12 12:24:29 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:45:20 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printfptr(unsigned long int n, char *base, int index)
+int	ft_printfptr(unsigned long n, char *base, int index)
 {
 	int				cw;
 	unsigned int	bn;
 
 	bn = ft_strlen(base);
-	if (index == 0)
-		write(1, "0x", 2);
-	if (n < 0)
+	if (index == 0 && n == 0)
 	{
-		write(1, "-", 1);
-		return (ft_printfptr(-n, base, index + 1) + 1);
+		write(1, "(nil)", 5);
+		return (3);
 	}
-	else if (n < bn)
+	else if (index == 0)
+		write(1, "0x", 2);
+	if (n < bn)
 		return (write(1, &base[n], 1));
 	else
 	{

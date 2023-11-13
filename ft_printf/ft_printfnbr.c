@@ -6,7 +6,7 @@
 /*   By: rwintgen <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:31:18 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/11/09 18:34:40 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:40:17 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int	ft_printfnbr(int n, char *base)
 {
-	int	cw;
-	int	bn;
+	int		cw;
+	int		bn;
 
 	bn = ft_strlen(base);
 	if (n < 0)
 	{
+		if (n == -2147483648)
+			return (write(1, "-2147483648", 11));
 		write(1, "-", 1);
 		return (ft_printfnbr(-n, base) + 1);
 	}
