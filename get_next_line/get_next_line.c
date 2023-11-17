@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:29:44 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/11/17 13:17:21 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/11/17 15:34:16 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,13 @@ char	*ft_buftostr(char *str, int fd)
 	buf = ft_calloc(sizeof(char), BUFFER_SIZE + 1);
 	chrd = 1;
 	if (!str)
-		str = calloc(sizeof(char), 1);
+		str = ft_calloc(sizeof(char), 1);
 	while (chrd != 0 && !ft_strchr(buf, '\n'))
 	{
 		chrd = read(fd, buf, BUFFER_SIZE);
 		if (chrd == -1)
 		{
+			free(str);
 			free(buf);
 			return (NULL);
 		}
@@ -70,7 +71,7 @@ char	*ft_getline(char *str)
 		return (NULL);
 	while (str[i] && str[i] != '\n')
 		i++;
-	line = calloc(sizeof(char), (i + 2));
+	line = ft_calloc(sizeof(char), (i + 2));
 	if (!str)
 		return (NULL);
 	i = 0;
@@ -80,11 +81,7 @@ char	*ft_getline(char *str)
 		i++;
 	}
 	if (str[i] == '\n')
-	{
 		line[i] = str[i];
-		i++;
-	}
-	line[i] = '\0';
 	return (line);
 }
 
@@ -104,7 +101,7 @@ char	*ft_clear(char *str)
 		free(str);
 		return (NULL);
 	}
-	nstr = calloc(sizeof(char), ft_strlen(str) - i + 1);
+	nstr = ft_calloc(sizeof(char), ft_strlen(str) - i + 1);
 	if (!nstr)
 		return (NULL);
 	i++;
