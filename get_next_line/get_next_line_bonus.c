@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:29:44 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/11/17 13:17:21 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/11/17 14:43:27 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	str = ft_buftostr(str, fd);
-	if (!str)
+	str[fd] = ft_buftostr(str[fd], fd);
+	if (!str[fd])
 		return (NULL);
-	line = ft_getline(str);
-	str = ft_clear(str);
+	line = ft_getline(str[fd]);
+	str[fd] = ft_clear(str[fd]);
 	return (line);
 }
 
