@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:30:07 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/11/17 13:21:36 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/11/18 12:01:36 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	if (!s1)
 		return (NULL);
 	combsize = ft_strlen(s1) + ft_strlen(s2) + 1;
-	combstr = calloc(sizeof(char), combsize);
+	combstr = ft_calloc(sizeof(char), combsize);
 	if (!combstr)
 		return (NULL);
 	i = 0;
