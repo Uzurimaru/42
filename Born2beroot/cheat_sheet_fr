@@ -6,7 +6,7 @@
 #    By: rwintgen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 09:26:52 by rwintgen          #+#    #+#              #
-#    Updated: 2023/11/27 14:55:36 by rwintgen         ###   ########.fr        #
+#    Updated: 2023/11/27 15:18:24 by rwintgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,8 @@ différence entre aptitude et apt, et ce qu'est APPArmor. Durant la soutenance,
 un script doit afficher des informations toutes les 10 minutes. Son fonction-
 nement sera vérifié en détails plus tard. Si les explications ne sont pas 
 claires, l'évaluation s'arrête ici.
-	- aptitude vs apt : apt est plus user-friendly et accessible grace a son UI,
-	aptitude laisse plus de liberte.
+	- aptitude vs apt : aptitude est plus user-friendly grace a son UI et permet 	plus de libertes sur la gestion des packages, aptitude laisse plus de 
+	liberte.
 	- APPArmor : Permet de gerer les permissions utilisateur pour les 
 	applications.
 
