@@ -6,7 +6,7 @@
 #    By: rwintgen <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 09:26:52 by rwintgen          #+#    #+#              #
-#    Updated: 2023/11/27 15:18:24 by rwintgen         ###   ########.fr        #
+#    Updated: 2023/11/28 16:04:22 by rwintgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ différence entre aptitude et apt, et ce qu'est APPArmor. Durant la soutenance,
 un script doit afficher des informations toutes les 10 minutes. Son fonction-
 nement sera vérifié en détails plus tard. Si les explications ne sont pas 
 claires, l'évaluation s'arrête ici.
-	- aptitude vs apt : aptitude est plus user-friendly grace a son UI et permet 	plus de libertes sur la gestion des packages, aptitude laisse plus de 
+	- aptitude vs apt : aptitude est plus user-friendly grace a son UI et permet
+	plus de libertes sur la gestion des packages, aptitude laisse plus de 
 	liberte.
 	- APPArmor : Permet de gerer les permissions utilisateur pour les 
 	applications.
@@ -48,14 +49,15 @@ claires, l'évaluation s'arrête ici.
 Utilisateur
 
 
-La personne évaluée doit maintenant vous expliquer comment elle a pu
-mettre en place les règles demandées dans le sujet sur sa machine
-virtuelle.
+La personne évaluée doit maintenant vous expliquer comment elle a pu mettre en 
+place les règles demandées dans le sujet sur sa machine virtuelle.
+	- chage -l <user>
 	- /etc/login.defs
+	- /etc/pam.d/common-password
 
-Maintenant que vous avez un nouvel utilisateur, demandez à la personne
-évaluée de créer un groupe nommé "evaluating" devant vous et de
-l'assigner à cet utilisateur.
+Maintenant que vous avez un nouvel utilisateur, demandez à la personne évaluée 
+de créer un groupe nommé "evaluating" devant vous et de l'assigner à cet 
+utilisateur.
 	- adduser <user>
 	- groupadd <group>
 	- adduser <user> <group>
@@ -64,10 +66,9 @@ Enfin, vérifiez que cet utilisateur appartient bien au groupe
 "evaluating".
 	- getent group <group>
 
-Pour finir, demandez à la personne évaluée de vous exposer l'intérêt
-de cette politique de mot de passe, ainsi que les avantages et les
-inconvénients de sa mise en place. Bien entendu, répondre que c'est
-parce le sujet le demande ne compte pas.
+Pour finir, demandez à la personne évaluée de vous exposer l'intérêtde cette 
+politique de mot de passe, ainsi que les avantages et les inconvénients de sa 
+mise en place.
 	- Une fort politique de mots de passe permet de renforcer la securite
 
 ================================================================================
@@ -136,7 +137,8 @@ Listez les règles actives dans UFW (ou "Firewalld"). Une règle doit exister po
 le port 4242.
 	- ufw status numbered
 
-Ajoutez une nouvelle règle pour ouvrir le port 8080. Vérifiez que celle-ci a bien été ajoutée en listant les règles actives.
+Ajoutez une nouvelle règle pour ouvrir le port 8080. Vérifiez que celle-ci a
+bien été ajoutée en listant les règles actives.
 	- ufw allow 8080
 
 Pour finir, supprimez cette nouvelle règle avec l'aide de la personne évaluée.
@@ -205,4 +207,6 @@ uniquement, vaudra 2 points
 	- systemctl status mariadb
 	- systemctl status lighttpd
 	- dpkg -l | grep php
-	- /var/www/html/wp-config.php
+	- /var/www/html/wp-config.phpa
+
+================================================================================
