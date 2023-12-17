@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:51:10 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/12/16 13:12:33 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/12/17 17:06:54 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,6 @@
 #include <math.h>
 
 #include <stdio.h>
-
-void	ft_shift(t_point *orig, t_point *dest, t_cam cam)
-{
-	printf("\n\tentered ft_shift\n\n");
-
-	orig->x += cam.shift_x;
-	printf("\tnew orig.x: %f\n", orig->x);
-
-	orig->y += cam.shift_y;
-	printf("\tnew orig.x: %f\n", orig->y);
-
-	dest->x += cam.shift_x;
-	printf("\tnew orig.x: %f\n", dest->x);
-
-	dest->y += cam.shift_y;
-	printf("\tnew orig.x: %f\n", dest->y);
-}
 
 void	ft_iso_line(t_point	*orig, t_point *dest, t_cam cam)
 {
@@ -48,7 +31,7 @@ void	ft_iso_line(t_point	*orig, t_point *dest, t_cam cam)
 	dest_x = dest->x;
 	dest_y = dest->y;
 
-	orig->x = (orig_x - orig_y) * cos(0.8);
+	orig->x = (orig_x - orig_y) * cos(0.8); // TODO replace with cam.angle
 	printf("\tnew orig.x: %f\n", orig->x);
 
 	orig->y = (orig_x + orig_y) * sin(0.8) - orig->z * cam.scale;
@@ -84,17 +67,12 @@ void	ft_bresenham(t_map *map, t_point orig, t_point dest)
 
 	printf("\nentering ft_iso_line...\n");
 
-	map->cam.scale = 0.12;
-
 	ft_iso_line(&orig, &dest, map->cam);
 
 	printf("\norig.x: %f\torig.y: %f\torig.z: %d", orig.x, orig.y, orig.z);
 	printf("\ndest.x: %f\tdest.y: %f\tdest.z: %d\n", dest.x, dest.y, dest.z);
 
 	printf("\nentering ft_shift...\n");
-
-	map->cam.shift_x = 10;
-	map->cam.shift_y = 7;
 
 	ft_shift(&orig, &dest, map->cam);
 

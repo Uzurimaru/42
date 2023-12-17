@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:39:09 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/12/16 13:12:34 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/12/17 17:05:26 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,26 @@ void	ft_add_color(t_point *orig, t_point *dest)
 
 void	ft_put_pixel(t_map *map, t_point pixel)
 {
-	// printf("\n\tentered ft_put_pixel\n\n");
-	// printf("\tpixel.x: %f\n", pixel.x);
-	// printf("\tpixel.y: %f\n", pixel.y);
-	// printf("\twindow width: %d\n", map->win_w);
-	// printf("\twindow height: %d\n", map->win_h);
-
 	if (pixel.y > map->win_h || pixel.x > map->win_w || pixel.y < 0 || pixel.x < 0)
 		return ;
 	mlx_put_pixel(map->mlx_img, pixel.x, pixel.y, pixel.col);
+}
+
+#include <stdio.h>
+
+void	ft_shift(t_point *orig, t_point *dest, t_cam cam)
+{
+	printf("\n\tentered ft_shift\n\n");
+
+	orig->x += cam.shift_x;
+	printf("\tnew orig.x: %f\n", orig->x);
+
+	orig->y += cam.shift_y;
+	printf("\tnew orig.x: %f\n", orig->y);
+
+	dest->x += cam.shift_x;
+	printf("\tnew orig.x: %f\n", dest->x);
+
+	dest->y += cam.shift_y;
+	printf("\tnew orig.x: %f\n", dest->y);
 }

@@ -6,27 +6,13 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:35:07 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/12/16 13:22:44 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/12/17 16:59:32 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fdf.h"
 #include "MLX42/MLX42.h"
-
-void my_keyhook(mlx_key_data_t keydata, t_map map)
-{
-	(void) map;
-	
-	if (keydata.key == MLX_KEY_J && keydata.action == MLX_PRESS)
-		ft_printf("Hello ");
-
-	if (keydata.key == MLX_KEY_K && keydata.action == MLX_RELEASE)
-		ft_printf("World");
-
-	if (keydata.key == MLX_KEY_L && keydata.action == MLX_REPEAT)
-		ft_printf("!");
-}
 
 int	main(int argc, char **argv)
 {
@@ -39,9 +25,16 @@ int	main(int argc, char **argv)
 	ft_printf("\n\nheight: %d\n", map->height);
 	ft_printf("width: %d\n", map->width);
 
-	map->cam.zoom = 15;
 	map->win_w = 750;
 	map->win_h = 500;
+
+	map->cam.zoom = 15;
+	map->cam.shift_x = 10;
+	map->cam.shift_y = 7;
+	map->cam.scale = 0.12;
+
+	// TODO check why segfault when using cam.angle
+	// map->cam.angle = 0.8;
 
 	map->mlx_ptr = mlx_init(map->win_w, map->win_h, "FdF", true);
 
@@ -54,8 +47,8 @@ int	main(int argc, char **argv)
 
 	ft_draw_map(map);
 
-	// TODO check how to use mlx_key_hook for bonuses
-	// mlx_key_hook(map->mlx_ptr, &ft_mod, map);
+	mlx_key_hook(map->mlx_ptr, &ft_mod_key, map);
+	mlx_scroll_hook(map->mlx_ptr, &ft_mod_scroll, map);
 
 	mlx_loop(map->mlx_ptr);
 	mlx_terminate(map->mlx_ptr);
