@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:52:59 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/12/17 17:07:25 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:02:22 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_point
 {
 	float	x;
 	float	y;
-	int		z;
+	float	z;
 
 	int		col;
 }	t_point;

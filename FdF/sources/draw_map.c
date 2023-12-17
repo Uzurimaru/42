@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:51:10 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/12/17 17:06:54 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:02:25 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,37 +55,37 @@ void	ft_bresenham(t_map *map, t_point orig, t_point dest)
 	orig.z = map->altitude[(int)orig.y][(int)orig.x];
 	dest.z = map->altitude[(int)dest.y][(int)dest.x];
 
-	printf("\norig.x: %f\torig.y: %f\torig.z: %d", orig.x, orig.y, orig.z);
-	printf("\ndest.x: %f\tdest.y: %f\tdest.z: %d\n", dest.x, dest.y, dest.z);
+	printf("\norig.x: %f\torig.y: %f\torig.z: %f", orig.x, orig.y, orig.z);
+	printf("\ndest.x: %f\tdest.y: %f\tdest.z: %f\n", dest.x, dest.y, dest.z);
 
 	printf("\nentering ft_add_color...\n");
 
 	ft_add_color(&orig, &dest);
 
-	printf("\norig.x: %f\torig.y: %f\torig.z: %d", orig.x, orig.y, orig.z);
-	printf("\ndest.x: %f\tdest.y: %f\tdest.z: %d\n", dest.x, dest.y, dest.z);
+	printf("\norig.x: %f\torig.y: %f\torig.z: %f", orig.x, orig.y, orig.z);
+	printf("\ndest.x: %f\tdest.y: %f\tdest.z: %f\n", dest.x, dest.y, dest.z);
 
 	printf("\nentering ft_iso_line...\n");
 
 	ft_iso_line(&orig, &dest, map->cam);
 
-	printf("\norig.x: %f\torig.y: %f\torig.z: %d", orig.x, orig.y, orig.z);
-	printf("\ndest.x: %f\tdest.y: %f\tdest.z: %d\n", dest.x, dest.y, dest.z);
+	printf("\norig.x: %f\torig.y: %f\torig.z: %f", orig.x, orig.y, orig.z);
+	printf("\ndest.x: %f\tdest.y: %f\tdest.z: %f\n", dest.x, dest.y, dest.z);
 
 	printf("\nentering ft_shift...\n");
 
 	ft_shift(&orig, &dest, map->cam);
 
-	printf("\norig.x: %f\torig.y: %f\torig.z: %d", orig.x, orig.y, orig.z);
-	printf("\ndest.x: %f\tdest.y: %f\tdest.z: %d\n", dest.x, dest.y, dest.z);
+	printf("\norig.x: %f\torig.y: %f\torig.z: %f", orig.x, orig.y, orig.z);
+	printf("\ndest.x: %f\tdest.y: %f\tdest.z: %f\n", dest.x, dest.y, dest.z);
 
 	printf("\nentering ft_zoom...\n");
 	printf("adding x%d factor...\n", map->cam.zoom);
 
 	ft_zoom(map, &orig, &dest);
 
-	printf("\norig.x: %f\torig.y: %f\torig.z: %d", orig.x, orig.y, orig.z);
-	printf("\ndest.x: %f\tdest.y: %f\tdest.z: %d\n", dest.x, dest.y, dest.z);
+	printf("\norig.x: %f\torig.y: %f\torig.z: %f", orig.x, orig.y, orig.z);
+	printf("\ndest.x: %f\tdest.y: %f\tdest.z: %f\n", dest.x, dest.y, dest.z);
 
 	delta_x = (dest.x - orig.x);
 	delta_y = (dest.y - orig.y);
