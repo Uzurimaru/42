@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:52:59 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/12/16 13:12:32 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/12/17 17:07:25 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_cam
 {
 	int		zoom;
 	float	scale;
+	//float	angle;
 	int		shift_x;
 	int		shift_y;
 }	t_cam;
@@ -53,10 +54,15 @@ void	ft_zoom(t_map *map, t_point *orig, t_point *dest);
 int		ft_max(float a, float b);
 void	ft_add_color(t_point *orig, t_point *dest);
 void	ft_put_pixel(t_map *map, t_point pixel);
+void	ft_scale(t_map *map, keys_t key);
+void	ft_move(t_map *map, keys_t key);
+void	ft_rerender(t_map *map);
+void	ft_shift(t_point *orig, t_point *dest, t_cam cam);
 
 void	ft_maptotab(char *file_name, t_map *map);
 void	ft_bresenham(t_map *map, t_point orig, t_point dest);
 void	ft_draw_map(t_map *map);
-void	ft_mod(t_map *map, int key);
+void	ft_mod_key(mlx_key_data_t keydata, void *param);
+void	ft_mod_scroll(double xdelta, double ydelta, void *param);
 
 #endif
