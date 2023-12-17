@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:51:10 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/12/17 18:02:25 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:19:34 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #include <stdio.h>
 
-void	ft_iso_line(t_point	*orig, t_point *dest, t_cam cam)
+void	ft_iso_line(t_point	*orig, t_point *dest, t_map *map)
 {
 	printf("\n\tentered ft_iso_line\n\n");
 
@@ -31,16 +31,16 @@ void	ft_iso_line(t_point	*orig, t_point *dest, t_cam cam)
 	dest_x = dest->x;
 	dest_y = dest->y;
 
-	orig->x = (orig_x - orig_y) * cos(0.8); // TODO replace with cam.angle
+	orig->x = (orig_x - orig_y) * cos(0.6); // TODO replace with cam.angle
 	printf("\tnew orig.x: %f\n", orig->x);
 
-	orig->y = (orig_x + orig_y) * sin(0.8) - orig->z * cam.scale;
+	orig->y = (orig_x + orig_y) * sin(0.6) - orig->z * map->cam.scale;
 	printf("\tnew orig.y: %f\n", orig->y);
 
-	dest->x = (dest_x - dest_y) * cos(0.8);
+	dest->x = (dest_x - dest_y) * cos(0.6);
 	printf("\tnew dest.x: %f\n", dest->x);
 
-	dest->y = (dest_x + dest_y) * sin(0.8) - dest->z * cam.scale;
+	dest->y = (dest_x + dest_y) * sin(0.6) - dest->z * map->cam.scale;
 	printf("\tnew dest.y: %f\n", dest->y);
 }
 
@@ -67,14 +67,14 @@ void	ft_bresenham(t_map *map, t_point orig, t_point dest)
 
 	printf("\nentering ft_iso_line...\n");
 
-	ft_iso_line(&orig, &dest, map->cam);
+	ft_iso_line(&orig, &dest, map);
 
 	printf("\norig.x: %f\torig.y: %f\torig.z: %f", orig.x, orig.y, orig.z);
 	printf("\ndest.x: %f\tdest.y: %f\tdest.z: %f\n", dest.x, dest.y, dest.z);
 
 	printf("\nentering ft_shift...\n");
 
-	ft_shift(&orig, &dest, map->cam);
+	ft_shift(&orig, &dest, map);
 
 	printf("\norig.x: %f\torig.y: %f\torig.z: %f", orig.x, orig.y, orig.z);
 	printf("\ndest.x: %f\tdest.y: %f\tdest.z: %f\n", dest.x, dest.y, dest.z);

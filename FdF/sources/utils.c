@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:39:09 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/12/17 17:58:59 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:13:57 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,19 +85,22 @@ void	ft_put_pixel(t_map *map, t_point pixel)
 
 #include <stdio.h>
 
-void	ft_shift(t_point *orig, t_point *dest, t_cam cam)
+void	ft_shift(t_point *orig, t_point *dest, t_map *map)
 {
 	printf("\n\tentered ft_shift\n\n");
 
-	orig->x += cam.shift_x;
+	printf("\tcam.shift_x: %d\n", map->cam.shift_x);
+	printf("\tcam.shift_y: %d\n", map->cam.shift_y);
+
+	orig->x += map->cam.shift_x;
 	printf("\tnew orig.x: %f\n", orig->x);
 
-	orig->y += cam.shift_y;
+	orig->y += map->cam.shift_y;
 	printf("\tnew orig.x: %f\n", orig->y);
 
-	dest->x += cam.shift_x;
+	dest->x += map->cam.shift_x;
 	printf("\tnew orig.x: %f\n", dest->x);
 
-	dest->y += cam.shift_y;
+	dest->y += map->cam.shift_y;
 	printf("\tnew orig.x: %f\n", dest->y);
 }
