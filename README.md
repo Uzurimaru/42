@@ -1,5 +1,5 @@
 # 42
-> Welcome to my coding journey at 42!
+Welcome to my coding journey at 42!
 ## Piscine
 #### Passed in September 2023
 The 42 piscine is the month-long entry exam for 42.
