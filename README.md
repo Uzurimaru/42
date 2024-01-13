@@ -25,7 +25,7 @@ __My get_next_line passed with final grade of 125/100. Steal my work [here](http
 ### Born2beroot
 The goal of this project is to manually partition and setup a VM running on Debian. Several services have been configured like phpmyadmin, wordpress, MariaDB, ufw...
 
-I'm afraid you're gonna have to figure this one out by yourself. __You can still steal my monitoring script [here](https://github.com/rwintgen/42/tree/main/Born2beroot) though.__
+I'm afraid you're gonna have to figure this one out by yourself. __You can steal my monitoring script [here](https://github.com/rwintgen/42/tree/main/Born2beroot) though.__
 
 ### FdF
 The goal of FdF is to parse a 2D map of integers of variable sizes and render them in a 3D window using the MiniLibX library.
