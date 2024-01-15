@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:39:09 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/15 15:38:39 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:15:16 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_err(int argc, char *argv)
 	int	len;
 	int	fd;
 
-	if (argc == 1 || argc > 2)
+	if (argc == 1 || argc > 3)
 		exit (1);
 	len = ft_strlen(argv) - 4;
 	if (len < 1)
