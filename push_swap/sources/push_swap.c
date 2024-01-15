@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:24:20 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/13 16:47:56 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:22:51 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-// TODO modif libft makefile to add ft_printf
+// TODO modif libft makefile to add ft_fprintf
 // TODO check why segfault when giving number > INT_MAX as argv
 
 ////////// UTIL //////////
@@ -90,7 +90,7 @@ int	ft_stack_sorted(t_node *stack)
 	return (1);
 }
 
-void	ft_print_stack(t_node *stack_a, t_node *stack_b)
+void	ft_print_stacks(t_node *stack_a, t_node *stack_b)
 {
 	int	index;
 	int	max;
@@ -105,16 +105,22 @@ void	ft_print_stack(t_node *stack_a, t_node *stack_b)
 	index = 0;
 	while (index < max)
 	{
-		printf("%d", stack_a->nb);
-		if (!(len_b < (max - index)))
+		if (stack_a)
 		{
-			printf("\t%d\n", stack_b->nb);
-			stack_b = stack_b->next;
-			len_b--;
+			printf("%d", stack_a->nb);
+			stack_a = stack_a->next;
 		}
 		else
-			printf("\n");
-		stack_a = stack_a->next;
+			printf("_");
+		printf("\t");
+		if (stack_b)
+		{
+			printf("%d", stack_b->nb);
+			stack_b = stack_b->next;
+		}
+		else
+			printf("_");
+		printf("\n");
 		index++;
 	}
 	printf("_\t_\na\tb\n\n");
@@ -142,20 +148,25 @@ void	ft_swap(t_node **top)
 	*top = sec;
 }
 
-void	sa(t_node **stack_a)
+void	sa(t_node **stack_a, int print)
 {
 	ft_swap(stack_a);
+	if (print)
+		printf("\tsa\n");
 }
 
-void	sb(t_node **stack_b)
+void	sb(t_node **stack_b, int print)
 {
 	ft_swap(stack_b);
+	if (print)
+		printf("\tsb\n");
 }
 
 void	ss(t_node **stack_a, t_node **stack_b)
 {
-	ft_swap(stack_a);
-	ft_swap(stack_b);
+	sa(stack_a, 0);
+	sb(stack_b, 0);
+	printf("\tss\n");
 }
 
 ////////// PUSH
@@ -170,18 +181,22 @@ void	ft_push(t_node **src, t_node **dst)
 	if (src_sec)
 		src_sec->prev = NULL;
 	(*src)->next = *dst;
-	(*dst)->prev = *src;
+	if (*dst)
+		(*dst)->prev = *src;
 	*dst = *src;
 	*src = src_sec;
 }
+
 void 	pa(t_node **stack_a, t_node **stack_b)
 {
 	ft_push(stack_a, stack_b);
+	printf("\tpa\n");
 }
 
 void 	pb(t_node **stack_b, t_node **stack_a)
 {
 	ft_push(stack_b, stack_a);
+	printf("\tpb\n");
 }
 
 ////////// ROTATE
@@ -218,36 +233,46 @@ void	ft_rev_rotate(t_node **top)
 	*top = last;
 }
 
-void	ra(t_node **stack_a)
+void	ra(t_node **stack_a, int print)
 {
 	ft_rotate(stack_a);
+	if (print)
+		printf("\tra\n");
 }
 
-void	rb(t_node **stack_b)
+void	rb(t_node **stack_b, int print)
 {
 	ft_rotate(stack_b);
+	if (print)
+		printf("\trb\n");
 }
 
 void	rr(t_node **stack_a, t_node **stack_b)
 {
-	ft_rotate(stack_a);
-	ft_rotate(stack_b);
+	ra(stack_a, 0);
+	rb(stack_b, 0);
+	printf("\trr\n");
 }
 
-void	rra(t_node **stack_a)
+void	rra(t_node **stack_a, int print)
 {
 	ft_rev_rotate(stack_a);
+	if (print)
+		printf("\trra\n");
 }
 
-void	rrb(t_node **stack_b)
+void	rrb(t_node **stack_b, int print)
 {
 	ft_rev_rotate(stack_b);
+	if (print)
+		printf("\trrb\n");
 }
 
 void	rrr(t_node **stack_a, t_node **stack_b)
 {
-	ft_rev_rotate(stack_a);
-	ft_rev_rotate(stack_b);
+	rra(stack_a, 0);
+	rrb(stack_b, 0);
+	printf("\trrr\n");
 }
 
 ////////// ERRS //////////
@@ -363,7 +388,7 @@ void	ft_init_stack_a(t_node **stack_a, char **argv)
 		i++;
 	}
 	printf("\n===============\n\nstack init:\n\n");
-	ft_print_stack(*stack_a, NULL);
+	ft_print_stacks(*stack_a, NULL);
 }
 
 ////////// ALGO //////////
@@ -374,27 +399,28 @@ void	ft_easy_sort(t_node **stack_a, int stack_len)
 
 	big = NULL;
 	if (stack_len == 2)
-		sa(stack_a);
+		sa(stack_a, 1);
 	else
 	{
 		big = ft_get_max(*stack_a);
 		if (big == *(stack_a))
-			ra(stack_a);
+			ra(stack_a, 1);
 		else if (big == (*stack_a)->next)
-			rra(stack_a);
+			rra(stack_a, 1);
 		if ((*stack_a)->nb > (*stack_a)->next->nb)
-			sa(stack_a);
+			sa(stack_a, 1);
 	}
-	printf("final result:\n\n");
-	ft_print_stack(*stack_a, NULL);
+	printf("\nfinal result:\n\n");
+	ft_print_stacks(*stack_a, NULL);
 }
 
 void	ft_hard_sort(t_node **stack_a, t_node **stack_b)
 {
-	(void) stack_a;
-	(void) stack_b;
+	while (ft_stack_len(*stack_a) > 3 && ft_stack_len(*stack_b) < 2)
+		pb(stack_a, stack_b);
 
-	printf("missing 3+ numbers algo.\nget to work!\n\n");
+	printf("\nfinal result:\n\n");
+	ft_print_stacks(*stack_a, *stack_b);
 }
 
 ////////// MAIN //////////

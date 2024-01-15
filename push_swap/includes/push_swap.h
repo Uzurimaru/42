@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:26:13 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/11 15:46:10 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:10:42 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ typedef struct s_node
 {
 	int				nb;
 	int				index;
+
+	int				ismax;
+	int				ismin;
 
 	struct s_node	*prev;
 	struct s_node	*next;

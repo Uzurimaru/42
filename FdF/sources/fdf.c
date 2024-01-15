@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:35:07 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/15 13:43:05 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:41:44 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,7 @@
 // TODO
 // Makefile a revoir
 // revoir #includes debut de fichiers (stdio, only fdf.h)
-// IOT core dumped when spaces at end of file lines
-
-void	ft_err(int argc, char *argv)
-{
-	int	len;
-	int	fd;
-
-	if (argc == 1 || argc > 2)
-		exit (1);
-	len = ft_strlen(argv) - 4;
-	if (len < 1)
-		exit (1);
-	if (argv[len] != '.' || argv[len + 1] != 'f'
-		|| argv[len + 2] != 'd' || argv[len + 3] != 'f')
-		exit (1);
-	fd = open(argv, O_RDONLY);
-}
+// Valgrind :(
 
 int	main(int argc, char **argv)
 {
