@@ -6,13 +6,11 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:43:17 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/12/17 17:58:49 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:11:04 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fdf.h"
-#include "MLX42/MLX42.h"
 
 void	ft_mod_key(mlx_key_data_t keydata, void *param)
 {
@@ -23,6 +21,10 @@ void	ft_mod_key(mlx_key_data_t keydata, void *param)
 		ft_move(map_c, keydata.key);
 	if (keydata.key == MLX_KEY_EQUAL || keydata.key == MLX_KEY_MINUS)
 		ft_scale(map_c, keydata.key);
+	if (keydata.key == MLX_KEY_I || keydata.key == MLX_KEY_O)
+		ft_color_shift(map_c, keydata.key);
+	if (keydata.key == MLX_KEY_ESCAPE)
+		mlx_close_window(map_c->mlx_ptr);
 	ft_rerender(map_c);
 	ft_draw_map(map_c);
 }
