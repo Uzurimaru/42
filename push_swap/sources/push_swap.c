@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:24:20 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/15 17:22:51 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/25 13:54:52 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 ////////// UTIL //////////
 
-t_node	*ft_get_max(t_node *stack)
+t_node	*ft_get_max_node(t_node *stack)
 {
 	int		max;
 	t_node	*max_node;
@@ -38,7 +38,7 @@ t_node	*ft_get_max(t_node *stack)
 	return (max_node);
 }
 
-t_node	*ft_get_min(t_node *stack)
+t_node	*ft_get_min_node(t_node *stack)
 {
 	int		min;
 	t_node	*min_node;
@@ -88,6 +88,100 @@ int	ft_stack_sorted(t_node *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+void	ft_tokenize(t_node *stack)
+{
+	int	index;
+	int	median;
+
+	if (!stack)
+		return ;
+	index = 0;
+	median = ft_stack_len(stack) / 2;
+	while (stack)
+	{
+		stack->pos = index;
+		if (index < median)
+			stack->top_half = 1;
+		else
+			stack->top_half = 0;
+		index++;
+		stack = stack->next;
+	}
+}
+
+void	ft_targetize(t_node *stack_a, t_node *stack_b)
+{
+	t_node	*cursor_b;
+	t_node	*target_node;
+	long	closest_sm;
+
+	cursor_b = NULL;
+	target_node = NULL;
+	closest_sm = LONG_MIN;
+	while (stack_a)
+	{
+		cursor_b = stack_b;
+		while (cursor_b)
+		{
+			if (cursor_b->nb < stack_a->nb && cursor_b->nb > closest_sm)
+			{
+				target_node = cursor_b;
+				closest_sm = cursor_b->nb;
+			}
+			cursor_b = cursor_b->next;
+		}
+		if (closest_sm == LONG_MIN)
+			target_node = ft_get_max_node(stack_b);
+		stack_a->target = target_node;
+		stack_a = stack_a->next;
+	}
+}
+
+void	ft_cost_analyze(t_node *stack_a, t_node *stack_b)
+{
+	while (stack_a)
+	{
+		if (stack_a->top_half)
+			stack_a->cost = stack_a->pos;
+		else
+			stack_a->cost = ft_stack_len(stack_a) - stack_a->pos;
+		if (stack_a->target->top_half)
+			stack_a->cost += stack_a->target->pos;
+		else
+			stack_a->cost += ft_stack_len(stack_b) - stack_a->target->pos;
+		stack_a = stack_a->next;
+	}
+}
+
+void	ft_find_cheapest(t_node *stack)
+{
+	long	cheapest_v;
+	t_node	*cheapest_n;
+
+	cheapest_n = NULL;
+	cheapest_v = LONG_MAX;
+	if (!stack)
+		return ;
+	while (stack)
+	{
+		if (stack->cost < cheapest_v)
+		{
+			cheapest_v = stack->cost;
+			cheapest_n = stack;
+		}
+		stack->cheapest = 0;
+		stack = stack->next;
+	}
+	cheapest_n->cheapest = 1;
+}
+
+t_node	*ft_get_cheapest(t_node *stack)
+{
+	while (stack && !(stack->cheapest))
+		stack = stack->next;
+	return (stack);
 }
 
 void	ft_print_stacks(t_node *stack_a, t_node *stack_b)
@@ -402,7 +496,7 @@ void	ft_easy_sort(t_node **stack_a, int stack_len)
 		sa(stack_a, 1);
 	else
 	{
-		big = ft_get_max(*stack_a);
+		big = ft_get_max_node(*stack_a);
 		if (big == *(stack_a))
 			ra(stack_a, 1);
 		else if (big == (*stack_a)->next)
@@ -410,17 +504,80 @@ void	ft_easy_sort(t_node **stack_a, int stack_len)
 		if ((*stack_a)->nb > (*stack_a)->next->nb)
 			sa(stack_a, 1);
 	}
-	printf("\nfinal result:\n\n");
-	ft_print_stacks(*stack_a, NULL);
+}
+
+void	ft_init_data(t_node *stack_a, t_node *stack_b)
+{
+	ft_tokenize(stack_a);
+	ft_tokenize(stack_b);
+	ft_targetize(stack_a, stack_b);
+	ft_cost_analyze(stack_a, stack_b);
+	ft_find_cheapest(stack_a);
+}
+void	ft_bring_to_top(t_node **a, t_node **b, t_node *top_a, t_node *top_b)
+{
+	while (*a != top_a)
+	{
+		if (top_a->top_half)
+			ra(a, 1);
+		else
+			rra(a, 1);
+	}
+	while (*b != top_b)
+	{
+		if (top_b->top_half)
+			rb(b, 1);
+		else
+			rrb(b, 1);
+	}
+}
+
+void	ft_transfer_to_b(t_node **stack_a, t_node **stack_b)
+{
+	t_node	*cheapest;
+
+	cheapest = ft_get_cheapest(*stack_a);
+	if (cheapest->top_half && cheapest->target->top_half)
+	{
+		while (*stack_a != cheapest && *stack_b != cheapest->target) 
+			rr(stack_a, stack_b);
+		ft_tokenize(*stack_a);
+		ft_tokenize(*stack_b);
+	}
+	else if (!(cheapest->top_half) && !(cheapest->target->top_half))
+	{
+		while (*stack_a != cheapest && *stack_b != cheapest->target) 
+			rrr(stack_a, stack_b);
+		ft_tokenize(*stack_a);
+		ft_tokenize(*stack_b);
+	}
+	ft_bring_to_top(stack_a, stack_b, cheapest, cheapest->target);
+	pb(stack_a, stack_b);
 }
 
 void	ft_hard_sort(t_node **stack_a, t_node **stack_b)
 {
-	while (ft_stack_len(*stack_a) > 3 && ft_stack_len(*stack_b) < 2)
-		pb(stack_a, stack_b);
+	unsigned int	len_a;
+	unsigned int	len_b;
 
-	printf("\nfinal result:\n\n");
-	ft_print_stacks(*stack_a, *stack_b);
+	len_a = ft_stack_len(*stack_a);
+	len_b = ft_stack_len(*stack_b);
+	while (len_a > 3 && len_b < 2 && !ft_stack_sorted(*stack_a)) // push to b untill 3 items remaining in a or 2 items in b
+	{
+		pb(stack_a, stack_b);
+		len_a--;
+		len_b++;
+	}
+	while (len_a > 3 && !ft_stack_sorted(*stack_a))
+	{
+		ft_init_data(*stack_a, *stack_b);
+		// if ((*stack_a)->cheapest)
+		// 	printf("chibre");
+		ft_transfer_to_b(stack_a, stack_b);
+		len_a--;
+	}
+	ft_easy_sort(stack_a, ft_stack_len(*stack_a));
+	//TODO init nodes from b stack and move them back to a. 42:37
 }
 
 ////////// MAIN //////////
@@ -445,16 +602,18 @@ int	main(int argc, char **argv)
 
 	if (!ft_stack_sorted(stack_a))
 	{
-		printf("sorting stack...\n\n");
+		printf("sorting stacks...\n\n");
 		if (ft_stack_len(stack_a) < 4)
 			ft_easy_sort(&stack_a, ft_stack_len(stack_a));
 		else
 			ft_hard_sort(&stack_a, &stack_b);
 	}
+	printf("\nfinal result:\n\n");
+	ft_print_stacks(stack_a, stack_b);
 	if (ft_stack_sorted(stack_a))
 		printf("stack is sorted.\n\n");
 	else
-		printf("stack could not be sorted.\n\n");
+		printf("stack could not be sorted. do better.\n\n");
 	ft_free_stack(&stack_a);
 	ft_free_stack(&stack_b);
 	return (0);

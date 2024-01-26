@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:26:13 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/15 15:10:42 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/25 13:11:43 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@
 typedef struct s_node
 {
 	int				nb;
-	int				index;
+	int				pos;
+	int				cost;
 
-	int				ismax;
-	int				ismin;
+	int				top_half;
+	int				cheapest;
+
+	struct s_node	*target;
 
 	struct s_node	*prev;
 	struct s_node	*next;
