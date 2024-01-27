@@ -6,15 +6,11 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:35:07 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/27 13:26:40 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/27 14:30:59 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-// TODO
-// revoir #includes debut de fichiers (stdio, only fdf.h)
-// Valgrind :(
 
 int	main(int argc, char **argv)
 {
