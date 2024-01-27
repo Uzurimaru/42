@@ -6,14 +6,13 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:35:07 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/15 15:41:44 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/27 13:26:40 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // TODO
-// Makefile a revoir
 // revoir #includes debut de fichiers (stdio, only fdf.h)
 // Valgrind :(
 

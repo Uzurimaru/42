@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:59:56 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/15 18:12:29 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/27 13:23:02 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_init_map(t_map *map, char **argv)
 	map->win_h = 1000;
 	if (argv[2])
 		map->proj = ft_atoi(argv[2]);
+	else
+		map->proj = 0;
 	map->cam.zoom = 5;
 	map->cam.shift_x = map->width / 1;
 	map->cam.shift_y = map->height / 6;

@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:34:27 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/15 15:53:05 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/27 13:39:46 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	ft_pop_alt(int *alt_num, char *line)
 		free(splitted[i]);
 		i++;
 	}
+	free(splitted[i]);
 	free(splitted);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 16:39:09 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/15 18:15:16 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/27 13:26:19 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ void	ft_freetab(int **tab, int height)
 	int	i;
 
 	i = 0;
+	(void)height;
 	if (!tab)
 		return ;
-	while (i < height)
+	while (tab[i])
 	{
 		free(tab[i]);
 		i++;

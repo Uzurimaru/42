@@ -6,14 +6,14 @@
 #    By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/04 13:31:22 by rwintgen          #+#    #+#              #
-#    Updated: 2023/12/13 15:06:23 by rwintgen         ###   ########.fr        #
+#    Updated: 2024/01/27 13:39:34 by rwintgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= fdf
 CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -O0 -g
 LIBMLX	:= ./MLX42
-LIBFT	:= ./libft
+LIBFT	:= ./libft/
 LIBFTA	:= $(LIBFT)/libft.a
 
 HEADERS	:= -I ./includes -I $(LIBMLX)/include -I $(LIBFT)
@@ -26,13 +26,13 @@ all: libft libmlx $(NAME)
 libmlx:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
-libft:
-	cd $(LIBFT) && make 
+./libft/libft.a:
+	make -sC $(LIBFT)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
-$(NAME): $(OBJS)
+$(NAME): ./libft/libft.a $(OBJS)
 	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
 clean:
@@ -44,4 +44,4 @@ fclean: clean
 	@rm -rf $(NAME)
 	@rm -r $(LIBFTA)
 
-re: clean all
+re: fclean all

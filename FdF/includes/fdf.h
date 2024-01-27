@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:52:59 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/15 13:38:30 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:38:59 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void	ft_bresenham(t_map *map, t_point orig, t_point dest);
 void	ft_draw_map(t_map *map);
 void	ft_mod_key(mlx_key_data_t keydata, void *param);
 void	ft_mod_scroll(double xdelta, double ydelta, void *param);
+void	ft_err(int argc, char *argv);
 
 #endif
