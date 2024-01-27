@@ -1,5 +1,7 @@
 # 42
 Welcome to my coding journey at 42!
+
+[![rwintgen's 42 stats](https://badge42.coday.fr/api/v2/clrv21dv5517501p4v0sbfuz1/stats?cursusId=21&coalitionId=219)](https://github.com/Coday-meric/badge42)
 ## Piscine
 #### Passed in September 2023
 The 42 piscine is the month-long entry exam for 42.
