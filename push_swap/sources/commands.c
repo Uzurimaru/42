@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:33:34 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/27 17:52:32 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/29 16:35:33 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,21 @@ void	sa(t_node **stack_a, int print)
 {
 	ft_swap(stack_a);
 	if (print)
-		printf("\tsa\n");
+		printf("sa\n");
 }
 
 void	sb(t_node **stack_b, int print)
 {
 	ft_swap(stack_b);
 	if (print)
-		printf("\tsb\n");
+		printf("sb\n");
 }
 
 void	ss(t_node **stack_a, t_node **stack_b)
 {
 	sa(stack_a, 0);
 	sb(stack_b, 0);
-	printf("\tss\n");
+	printf("ss\n");
 }
 
 void	ft_push(t_node **src, t_node **dst)
@@ -70,13 +70,13 @@ void	ft_push(t_node **src, t_node **dst)
 void 	pa(t_node **stack_b, t_node **stack_a)
 {
 	ft_push(stack_b, stack_a);
-	printf("\tpa\n");
+	printf("pa\n");
 }
 
 void 	pb(t_node **stack_a, t_node **stack_b)
 {
 	ft_push(stack_a, stack_b);
-	printf("\tpb\n");
+	printf("pb\n");
 }
 
 void	ft_rotate(t_node **top)
@@ -115,40 +115,40 @@ void	ra(t_node **stack_a, int print)
 {
 	ft_rotate(stack_a);
 	if (print)
-		printf("\tra\n");
+		printf("ra\n");
 }
 
 void	rb(t_node **stack_b, int print)
 {
 	ft_rotate(stack_b);
 	if (print)
-		printf("\trb\n");
+		printf("rb\n");
 }
 
 void	rr(t_node **stack_a, t_node **stack_b)
 {
 	ra(stack_a, 0);
 	rb(stack_b, 0);
-	printf("\trr\n");
+	printf("rr\n");
 }
 
 void	rra(t_node **stack_a, int print)
 {
 	ft_rev_rotate(stack_a);
 	if (print)
-		printf("\trra\n");
+		printf("rra\n");
 }
 
 void	rrb(t_node **stack_b, int print)
 {
 	ft_rev_rotate(stack_b);
 	if (print)
-		printf("\trrb\n");
+		printf("rrb\n");
 }
 
 void	rrr(t_node **stack_a, t_node **stack_b)
 {
 	rra(stack_a, 0);
 	rrb(stack_b, 0);
-	printf("\trrr\n");
+	printf("rrr\n");
 }
