@@ -6,12 +6,12 @@
 #    By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:30:27 by rwintgen          #+#    #+#              #
-#    Updated: 2023/12/09 15:06:49 by rwintgen         ###   ########.fr        #
+#    Updated: 2024/01/29 15:59:59 by rwintgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	= ft_atoi.c \
-		ft_atoi.c \
+		ft_atol.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_isalnum.c \
