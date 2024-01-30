@@ -35,18 +35,18 @@ int	main(int argc, char **argv)
 
 	if (!ft_stack_sorted(stack_a))
 	{
-		printf("sorting stacks...\n\n=============\n\n");
+		// printf("sorting stacks...\n\n=============\n\n");
 		if (ft_stack_len(stack_a) < 4)
 			ft_easy_sort(&stack_a, ft_stack_len(stack_a));
 		else
 			ft_hard_sort(&stack_a, &stack_b);
 	}
-	printf("\nfinal result:\n\n");
-	ft_print_stacks(stack_a, stack_b);
-	if (ft_stack_sorted(stack_a))
-		printf("stack is sorted.\n\n");
-	else
-		printf("stack could not be sorted. do better.\n\n");
+	// printf("\nfinal result:\n\n");
+	// ft_print_stacks(stack_a, stack_b);
+	// if (ft_stack_sorted(stack_a))
+		// printf("stack is sorted.\n\n");
+	// else
+		// printf("stack could not be sorted. do better.\n\n");
 	ft_free_stack(&stack_a);
 	ft_free_stack(&stack_b);
 	return (0);

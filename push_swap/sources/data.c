@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:57:16 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/29 15:11:57 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:03:41 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_tokenize(t_node *stack)
 	if (!stack)
 		return ;
 	index = 0;
-	median = ft_stack_len(stack) / 2;
+	median = (ft_stack_len(stack) / 2) + 1;
 	while (stack)
 	{
 		stack->pos = index;

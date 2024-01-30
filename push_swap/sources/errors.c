@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:41:43 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/27 15:43:50 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/30 13:28:18 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,21 @@ void	ft_free_stack(t_node **stack)
 
 void	ft_err_free(int err_id, t_node **stack)
 {
-	if (err_id == 1)
-		write(2, "Error: not enough arguments\n", 28);
+	// if (err_id == 1)
+	// 	write(2, "Error\n", 6);
 	if (err_id == 2)
 	{
-		write(2, "Error: invalid syntax\n", 22);
+		write(2, "Error\n", 6);
 		ft_free_stack(stack);
 	}
 	if (err_id == 3)
 	{
-		write(2, "Error: number too large\n", 24);
+		write(2, "Error\n", 6);
 		ft_free_stack(stack);
 	}
 	if (err_id == 4)
 	{
-		write(2, "Error: duplicate number\n", 24);
+		write(2, "Error\n", 6);
 		ft_free_stack(stack);
 	}
 	exit (err_id);

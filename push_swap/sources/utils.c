@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:40:09 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/27 16:25:48 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/29 16:45:35 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ void	ft_init_stack_a(t_node **stack_a, char **argv)
 		ft_lst_append(stack_a, nb);
 		i++;
 	}
-	printf("\n===============\n\nstack init:\n\n");
-	ft_print_stacks(*stack_a, NULL);
+	// printf("\n===============\n\nstack init:\n\n");
+	// ft_print_stacks(*stack_a, NULL);
 }

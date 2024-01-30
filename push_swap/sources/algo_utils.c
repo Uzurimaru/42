@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:20:26 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/27 19:01:42 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/29 16:44:13 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,6 @@ void	ft_transfer_to_a(t_node **stack_a, t_node **stack_b)
 {
 	ft_bring_to_top(stack_a, stack_b, (*stack_b)->target, *stack_b);
 	pa(stack_b, stack_a);
-	printf("\n");
-	ft_print_stacks(*stack_a, *stack_b);
+	// printf("\n");
+	// ft_print_stacks(*stack_a, *stack_b);
 }
