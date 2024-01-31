@@ -19,10 +19,6 @@
 # include <limits.h>
 # include "../libft/libft.h"
 
-
-# include <stdio.h>
-
-
 typedef struct s_node
 {
 	int				nb;
@@ -44,6 +40,7 @@ int		ft_err_syntax(char *nb);
 
 // Utils
 
+void	ft_free_split(char **av);
 void	ft_lst_append(t_node **stack, int nb);
 void	ft_init_stack_a(t_node **stack_a, char **argv);
 int		ft_stack_len(t_node *stack);
@@ -94,9 +91,5 @@ void	rr(t_node **stack_a, t_node **stack_b);
 void	rra(t_node **stack_a, int print);
 void	rrb(t_node **stack_b, int print);
 void	rrr(t_node **stack_a, t_node **stack_b);
-
-//
-void	ft_print_stacks(t_node *stack_a, t_node *stack_b);
-//
 
 #endif

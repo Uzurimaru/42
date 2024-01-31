@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 16:20:35 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:44 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:14:30 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,18 @@ void	ft_hard_sort(t_node **stack_a, t_node **stack_b)
 		pb(stack_a, stack_b);
 		len_a--;
 		len_b++;
-		// printf("\n");
-		// ft_print_stacks(*stack_a, *stack_b);
 	}
 	while (len_a > 3 && !ft_stack_sorted(*stack_a))
 	{
 		ft_init_data_a(*stack_a, *stack_b);
 		ft_transfer_to_b(stack_a, stack_b);
 		len_a--;
-		// printf("\n");
-		// ft_print_stacks(*stack_a, *stack_b);
 	}
 	ft_easy_sort(stack_a, ft_stack_len(*stack_a));
-	// printf("\n");
-	// ft_print_stacks(*stack_a, *stack_b);
 	while (*stack_b)
 	{
 		ft_init_data_b(*stack_a, *stack_b);
 		ft_transfer_to_a(stack_a, stack_b);
 	}
 	ft_order(stack_a);
-	// ft_print_stacks(*stack_a, *stack_b);
 }

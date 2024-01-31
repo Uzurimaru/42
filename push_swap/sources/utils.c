@@ -6,11 +6,24 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:40:09 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/29 16:45:35 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:33:24 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	ft_free_split(char **av)
+{
+	int	i;
+
+	i = 0;
+	while (av[i])
+	{
+		free(av[i]);
+		i++;
+	}
+	free(av);
+}
 
 int	ft_stack_len(t_node *stack)
 {
@@ -27,6 +40,8 @@ int	ft_stack_len(t_node *stack)
 
 int	ft_stack_sorted(t_node *stack)
 {
+	if (!stack)
+		return (1);
 	while (stack->next)
 	{
 		if (stack->nb >= stack->next->nb)
@@ -77,6 +92,4 @@ void	ft_init_stack_a(t_node **stack_a, char **argv)
 		ft_lst_append(stack_a, nb);
 		i++;
 	}
-	// printf("\n===============\n\nstack init:\n\n");
-	// ft_print_stacks(*stack_a, NULL);
 }

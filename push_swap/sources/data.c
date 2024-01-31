@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:57:16 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/30 15:03:41 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/30 15:15:48 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	ft_targetize_b(t_node *stack_a, t_node *stack_b)
 	}
 }
 
-void	ft_cost_analyze(t_node *stack_a, t_node *stack_b) // TODO opti rr, rrr
+void	ft_cost_analyze(t_node *stack_a, t_node *stack_b)
 {
 	int	len_a;
 	int	len_b;

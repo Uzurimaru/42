@@ -6,7 +6,7 @@
 #    By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/29 15:19:52 by rwintgen          #+#    #+#              #
-#    Updated: 2024/01/29 16:31:37 by rwintgen         ###   ########.fr        #
+#    Updated: 2024/01/30 15:22:23 by rwintgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,13 @@ CC		:=	gcc
 
 SRCS_C	:=	algo_utils.c \
 				algorithms.c \
-				commands.c \
+				cmd_push.c \
+				cmd_swap.c \
+				cmd_rotate.c \
+				cmd_rrotate.c \
 				data.c \
 				errors.c \
 				push_swap.c \
-				tmp_print_stacks.c \
 				utils.c \
 				utils_2.c \
 
