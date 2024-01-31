@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:59:56 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/31 17:13:49 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:23:30 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_mod_key(mlx_key_data_t keydata, void *param)
 	t_map	*map_c;
 
 	map_c = param;
-
 	if (keydata.key == MLX_KEY_ESCAPE)
 		mlx_close_window(map_c->mlx_ptr);
 }
