@@ -35,6 +35,6 @@ The goal of FdF is to parse a 2D map of integers of variable sizes and render th
 __I haven't completed this project yet, but you can steal my work [here](https://github.com/rwintgen/42/tree/main/FdF).__
 
 ### push_swap
-Push_swap is a program which goal is to sort a set of random integers by ascending order in the least amount of operations as possible using 2 stacks. A given set of operations is programmed to manipulate the content of the chosen data structure (in my case double linked lists).
+Push_swap is a program which goal is to sort a set of random integers by ascending order in the least amount of operations as possible using 2 stacks. Completed by implementing [A. Yigit Ogun](https://github.com/ayogun)'s Turk Algorithm.
 
 __I haven't completed this project yet, but you can steal my work [here](https://github.com/rwintgen/42/tree/main/push_swap).__
