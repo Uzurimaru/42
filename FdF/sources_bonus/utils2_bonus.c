@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:59:56 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/31 17:13:49 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:50:16 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_init_map(t_map *map, char **argv)
 		map->proj = ft_atoi(argv[2]);
 	else
 		map->proj = 0;
-	map->cam.zoom = 15;
+	map->cam.zoom = 5;
 	map->cam.shift_x = map->width / 1;
 	map->cam.shift_y = map->height / 6;
 	map->cam.scale = 0.12;
@@ -29,14 +29,16 @@ void	ft_init_map(t_map *map, char **argv)
 	map->mlx_img = mlx_new_image(map->mlx_ptr, map->win_w, map->win_h);
 }
 
-void	ft_mod_key(mlx_key_data_t keydata, void *param)
+void	ft_add_color(t_point *orig, t_point *dest, t_map *map)
 {
-	t_map	*map_c;
+	int	altitude;
 
-	map_c = param;
-
-	if (keydata.key == MLX_KEY_ESCAPE)
-		mlx_close_window(map_c->mlx_ptr);
+	altitude = dest->z + orig->z;
+	orig->col = 0xFFFFFFFF;
+	if (altitude > 257)
+		altitude = 257;
+	if (orig->z || dest->z)
+		orig->col -= 0xFF00 * ((altitude) * map->col_shift);
 }
 
 void	ft_put_pixel(t_map *map, t_point pixel)

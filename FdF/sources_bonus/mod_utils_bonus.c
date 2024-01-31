@@ -6,11 +6,11 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:02:35 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/09 18:32:06 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:07:34 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 void	ft_scale(t_map *map, keys_t key)
 {

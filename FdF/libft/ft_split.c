@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 16:47:24 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/15 13:47:41 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/15 15:19:27 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static size_t	ft_countwords(const char *s, char c)
 	i = 0;
 	if (s[0] == '\0')
 		return (0);
-	while (s[i + 1])
+	while (s[i])
 	{
-		if (s[i] == c && s[i + 1] != c)
+		if (s[i] == c && s[i + 1] != c && s[i + 1])
 			wc++;
 		i++;
 	}

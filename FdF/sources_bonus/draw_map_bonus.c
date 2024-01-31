@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:51:10 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/31 17:06:22 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:07:30 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_bresenham(t_map *map, t_point orig, t_point dest)
 
 	orig.z = map->altitude[(int)orig.y][(int)orig.x];
 	dest.z = map->altitude[(int)dest.y][(int)dest.x];
-	orig.col = 0xFFFFFFFF;
+	ft_add_color(&orig, &dest, map);
 	if (!map->proj)
 		ft_iso_line(&orig, &dest, map);
 	ft_shift(&orig, &dest, map);

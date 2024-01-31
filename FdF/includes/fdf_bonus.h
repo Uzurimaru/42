@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fdf_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 15:52:59 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/31 16:57:49 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/01/31 16:51:44 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef FDF_BONUS_H
+# define FDF_BONUS_H
 
 # include "MLX42/MLX42.h"
 # include "libft.h"
@@ -64,7 +64,7 @@ void	ft_move(t_map *map, keys_t key);
 void	ft_rerender(t_map *map);
 void	ft_shift(t_point *orig, t_point *dest, t_map *map);
 void	ft_color_shift(t_map *map, keys_t key);
-void	ft_init_map(t_map *map);
+void	ft_init_map(t_map *map, char **argv);
 void	ft_maptotab(char *file_name, t_map *map);
 void	ft_bresenham(t_map *map, t_point orig, t_point dest);
 void	ft_draw_map(t_map *map);
