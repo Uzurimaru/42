@@ -6,12 +6,13 @@
 #    By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:30:27 by rwintgen          #+#    #+#              #
-#    Updated: 2024/01/29 15:59:59 by rwintgen         ###   ########.fr        #
+#    Updated: 2024/02/05 15:46:42 by rwintgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	= ft_atoi.c \
 		ft_atol.c \
+		ft_atoll.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_isalnum.c \
@@ -62,7 +63,8 @@ SRCS	= ft_atoi.c \
 		ft_printf/ft_printfnbru.c \
 		ft_printf/ft_printfptr.c \
 		ft_printf/ft_printfstr.c \
-		get_next_line.c
+		get_next_line.c \
+		ft_free_char_tab.c
 
 OBJS    = ${SRCS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 15:40:09 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/31 15:33:24 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:01:02 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,22 @@ void	ft_init_stack_a(t_node **stack_a, char **argv)
 	long	nb;
 	int		i;
 
+	if (!(*argv))
+		ft_err_free(6, stack_a);
 	i = 0;
 	while (argv[i])
 	{
 		if (ft_err_syntax(argv[i]))
+		{
 			ft_err_free(2, stack_a);
+			break ;
+		}
 		nb = ft_atol(argv[i]);
-		if (nb < INT_MIN || nb > INT_MAX)
+		if (nb < INT_MIN || nb > INT_MAX || ft_err_dup(*stack_a, nb))
+		{
 			ft_err_free(3, stack_a);
-		if (ft_err_dup(*stack_a, nb))
-			ft_err_free(4, stack_a);
+			break ;
+		}
 		ft_lst_append(stack_a, nb);
 		i++;
 	}

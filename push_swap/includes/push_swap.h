@@ -37,6 +37,7 @@ void	ft_free_stack(t_node **stack);
 void	ft_err_free(int err_id, t_node **stack);
 int		ft_err_dup(t_node *stack, int nb);
 int		ft_err_syntax(char *nb);
+int		ft_err_intmax(char *nb);
 
 // Utils
 
