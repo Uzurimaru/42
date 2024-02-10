@@ -16,6 +16,7 @@ The goal of this project is to code from scratch basic utils functions already a
 __My libft passed with final grade of 125/100. Steal my work [here](https://github.com/rwintgen/42/tree/main/libft).__
 
 ### ft_printf
+![ft_printf](https://github.com/rwintgen/42/assets/150167832/2bcd3af9-c5ca-41fd-b58a-935477b07ef4)
 In this project, I initated myself to variadic functions by coding from scratch a function that aims to replicate the behavior of the printf function from stdio.h for later, more complex projects.
 
 __My ft_printf passed with final grade of 100/100. Steal my work [here](https://github.com/rwintgen/42/tree/main/ft_printf).__
