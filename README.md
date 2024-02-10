@@ -33,6 +33,7 @@ The goal of this project is to manually partition and setup a VM running on Debi
 
 I'm afraid you're gonna have to figure this one out by yourself. __You can steal my monitoring script [here](https://github.com/rwintgen/42/tree/main/Born2beroot) though.__
 
+![42 (2)](https://github.com/rwintgen/42/assets/150167832/cb58c23c-febe-490f-bb62-6f6266a3e199)
 #### FdF
 The goal of FdF is to parse a 2D map of integers of variable sizes and render them in a 3D window using the MiniLibX library.
 
