@@ -51,6 +51,7 @@ __I haven't completed this project yet, but you can steal my work [here](https:/
 
 -----
 
+![42 (3)](https://github.com/rwintgen/42/assets/150167832/0c4465bd-d03f-4332-964b-d0c43a09a57d)
 #### push_swap
 Push_swap is a program which goal is to sort a set of random integers by ascending order in the least amount of operations as possible using 2 stacks. Completed by implementing [A. Yigit Ogun](https://github.com/ayogun)'s Turk Algorithm.
 
