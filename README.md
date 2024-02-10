@@ -55,7 +55,7 @@ __I haven't completed this project yet, but you can check out what I did so far 
 #### pipex
 Pipex is a program designed to replicate the behaviour of unix pipes "|". Features include multi-pipes and heredocs in addition to the classic executable commands.
 
-__I haven't completed this project yet, will upload soon.__
+__I haven't completed this project yet, but you can check out what I did so far [here](https://github.com/rwintgen/42/tree/main/pipex).__
 
 -----
 
