@@ -27,6 +27,7 @@ The function get_next_line returns the first line of a file passed as a paramete
 
 __My get_next_line passed with final grade of 125/100. Steal my work [here](https://github.com/rwintgen/42/tree/main/get_next_line).__
 
+![42 (1)](https://github.com/rwintgen/42/assets/150167832/128c4c7e-3d23-4aab-99a8-8b3c1b6cbf82)
 #### Born2beroot
 The goal of this project is to manually partition and setup a VM running on Debian. Several services have been configured like phpmyadmin, wordpress, MariaDB, ufw...
 
