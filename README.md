@@ -21,6 +21,7 @@ In this project, I initated myself to variadic functions by coding from scratch 
 
 __My ft_printf passed with final grade of 100/100. Steal my work [here](https://github.com/rwintgen/42/tree/main/ft_printf).__
 
+![42](https://github.com/rwintgen/42/assets/150167832/b279756b-d7ef-4973-bc86-865602b23228)
 #### get_next_line
 The function get_next_line returns the first line of a file passed as a parameter. Thanks to a static variable, the function will return the next line of a file every time it is called.
 
