@@ -10,6 +10,7 @@ You can access my Piscine exercises (up to c08) [here](https://github.com/rwintg
 
 ## Cursus
 ### libft
+![libft](<libft (2).png>)
 The goal of this project is to code from scratch basic utils functions already available in libraries like stdlib.h, unistd.h and string.h for use in later projects.
 
 __My libft passed with final grade of 125/100. Steal my work [here](https://github.com/rwintgen/42/tree/main/libft).__
