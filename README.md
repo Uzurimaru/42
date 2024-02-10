@@ -16,11 +16,13 @@ The goal of this project is to code from scratch basic utils functions already a
 __My libft passed with final grade of 125/100. Steal my work [here](https://github.com/rwintgen/42/tree/main/libft).__
 
 
+
 ![ft_printf](https://github.com/rwintgen/42/assets/150167832/2bcd3af9-c5ca-41fd-b58a-935477b07ef4)
 #### ft_printf
 In this project, I initated myself to variadic functions by coding from scratch a function that aims to replicate the behavior of the printf function from stdio.h for later, more complex projects.
 
 __My ft_printf passed with final grade of 100/100. Steal my work [here](https://github.com/rwintgen/42/tree/main/ft_printf).__
+
 
 
 ![42](https://github.com/rwintgen/42/assets/150167832/b279756b-d7ef-4973-bc86-865602b23228)
@@ -30,6 +32,7 @@ The function get_next_line returns the first line of a file passed as a paramete
 __My get_next_line passed with final grade of 125/100. Steal my work [here](https://github.com/rwintgen/42/tree/main/get_next_line).__
 
 
+
 ![42 (1)](https://github.com/rwintgen/42/assets/150167832/128c4c7e-3d23-4aab-99a8-8b3c1b6cbf82)
 #### Born2beroot
 The goal of this project is to manually partition and setup a VM running on Debian. Several services have been configured like phpmyadmin, wordpress, MariaDB, ufw...
@@ -37,11 +40,13 @@ The goal of this project is to manually partition and setup a VM running on Debi
 I'm afraid you're gonna have to figure this one out by yourself. __You can steal my monitoring script [here](https://github.com/rwintgen/42/tree/main/Born2beroot) though.__
 
 
+
 ![42 (2)](https://github.com/rwintgen/42/assets/150167832/cb58c23c-febe-490f-bb62-6f6266a3e199)
 #### FdF
 The goal of FdF is to parse a 2D map of integers of variable sizes and render them in a 3D window using the MiniLibX library.
 
 __I haven't completed this project yet, but you can steal my work [here](https://github.com/rwintgen/42/tree/main/FdF).__
+
 
 
 #### push_swap
