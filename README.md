@@ -51,6 +51,14 @@ __I haven't completed this project yet, but you can check out what I did so far 
 
 -----
 
+![42 (4)](https://github.com/rwintgen/42/assets/150167832/ba06c054-5967-4db3-9a14-863369f998a8)
+#### pipex
+Pipex is a program designed to replicate the behaviour of unix pipes "|". Features include multi-pipes and heredocs in addition to the classic executable commands.
+
+__I haven't completed this project yet, will upload soon.__
+
+-----
+
 ![42 (3)](https://github.com/rwintgen/42/assets/150167832/0c4465bd-d03f-4332-964b-d0c43a09a57d)
 #### push_swap
 Push_swap is a program which goal is to sort a set of random integers by ascending order in the least amount of operations as possible using 2 stacks. Completed by implementing [A. Yigit Ogun](https://github.com/ayogun)'s Turk Algorithm.
