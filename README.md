@@ -6,7 +6,7 @@ Welcome to my coding journey at 42!
 #### Passed in September 2023
 The 42 piscine is the month-long entry exam for 42.
 
-You can access my Piscine exercises (up to c08) [here](https://github.com/rwintgen/42/tree/main/piscine_42). All the exercies done have passed the Moulinette and Norminette.
+You can access my Piscine exercises (up to c08) [here](https://github.com/rwintgen/42/tree/main/piscine_42). All the exercises done have passed the Moulinette and Norminette.
 
 ## Cursus
 ### libft
@@ -20,7 +20,7 @@ In this project, I initated myself to variadic functions by coding from scratch 
 __My ft_printf passed with final grade of 100/100. Steal my work [here](https://github.com/rwintgen/42/tree/main/ft_printf).__
 
 ### get_next_line
-the function get_next_line returns the first line of a file passed as a parameter. Thanks to a static variable, the function will return the next line of a file every time it is called.
+The function get_next_line returns the first line of a file passed as a parameter. Thanks to a static variable, the function will return the next line of a file every time it is called.
 
 __My get_next_line passed with final grade of 125/100. Steal my work [here](https://github.com/rwintgen/42/tree/main/get_next_line).__
 
@@ -37,4 +37,4 @@ __I haven't completed this project yet, but you can steal my work [here](https:/
 ### push_swap
 Push_swap is a program which goal is to sort a set of random integers by ascending order in the least amount of operations as possible using 2 stacks. Completed by implementing [A. Yigit Ogun](https://github.com/ayogun)'s Turk Algorithm.
 
-__I haven't completed this project yet, but you can steal my work [here](https://github.com/rwintgen/42/tree/main/push_swap).__
+__My push_swap passed with final grade of 100/100. Steal my work [here](https://github.com/rwintgen/42/tree/main/push_swap).__
