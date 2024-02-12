@@ -52,7 +52,7 @@ __I haven't completed this project yet, but you can check out what I did so far 
 
 ![42 (5)](https://github.com/rwintgen/42/assets/150167832/3f135487-fabd-436e-bc62-7a2394bd138d)
 #### pipex
-Pipex is a program designed to replicate the behaviour of unix pipes "|". Features include multi-pipes and heredocs in addition to the classic executable commands.
+Pipex is a program designed to replicate the behaviour of unix pipes "|". Features include interprocess communication, multi-pipes and heredocs in addition to the classic executable commands.
 
 __I haven't completed this project yet, but you can check out what I did so far [here](https://github.com/rwintgen/42/tree/main/pipex).__
 
