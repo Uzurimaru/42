@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 13:38:33 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/02/10 13:13:01 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/02/12 13:16:39 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,53 +95,27 @@ void	ft_exec_cmd(char *cmd, char **envp)
 	}
 }
 
-void	ft_write_heredoc(char **argv, int *pipefd)
+void	ft_create_pipe(char *cmd, char **envp)
 {
-	char	*line;
-	int		sep_len;
-
-	close(pipefd[0]);
-	sep_len = ft_strlen(argv[2]);
-	ft_strjoin(argv[2], "\n");
-	while (1)
-	{
-		ft_printf("heredoc> ");
-		line = get_next_line(0);
-		if (line == NULL)
-			strdup();
-		if (ft_strncmp(line, argv[2], sep_len) == 0)
-		{
-			free(line);
-			exit(8);
-		}
-		ft_putstr_fd(line, pipefd[1]);
-		free(line);
-	}
-}
-
-void	ft_read_heredoc(char **argv)
-{
-	int		pipefd[2];
-	int		pipe_ret;
-	pid_t	pid;
+	int	pipefd[2];
+	int	pipe_ret;
+	int	pid;
 
 	pipe_ret = pipe(pipefd);
 	if (pipe_ret < 0)
-		exit(6);
+		exit(9);
 	pid = fork();
 	if (pid < 0)
-		exit(7);
-	if (pid == 0)
-		ft_write_heredoc(argv, pipefd);
+		exit(10);
+	else if (pid == 0)
+	{
+		close(pipefd[0]);
+		dup2(pipefd[1], 1);
+		ft_exec_cmd(cmd, envp);
+	}
 	else
 	{
 		close(pipefd[1]);
 		dup2(pipefd[0], 0);
-		wait(NULL);
 	}
-}
-
-void	ft_create_pipe(char *cmd, char **envp)
-{
-	// TODO faire la fonction duh
 }

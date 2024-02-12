@@ -6,23 +6,22 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:06:55 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/02/10 13:12:40 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:03:00 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
-// TODO modif Makefile B_SRCS
+// TODO missing 1 free on heredocs
+// TODO too many FDs open at end of program
+
+// clear && valgrind --leak-check=full --track-origins=yes --track-fds=yes --trace-children=yes ./pipex_bonus infile "cat" "grep TEST" "wc -l" outfile
 
 int	main(int argc, char **argv, char **envp)
 {
 	int		fd_outfile;
 	int		fd_infile;
 	int		arg_cursor;
-
-	(void) fd_infile;
-	(void) fd_outfile;
-	(void) envp;
 
 	arg_cursor = 2;
 	if (argc < 5)
@@ -53,6 +52,6 @@ int	main(int argc, char **argv, char **envp)
 		arg_cursor++;
 	}
 	dup2(fd_outfile, 1);
-	ft_exec_cmd(argv[arg_cursor - 2], envp);
+	ft_exec_cmd(argv[arg_cursor], envp);
 	return (0);
 }

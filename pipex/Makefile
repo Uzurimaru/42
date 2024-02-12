@@ -6,7 +6,7 @@
 #    By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 13:26:49 by rwintgen          #+#    #+#              #
-#    Updated: 2024/02/10 10:45:54 by rwintgen         ###   ########.fr        #
+#    Updated: 2024/02/12 13:22:31 by rwintgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRCS	:=	$(addprefix $(SRCDIR), $(SRCS_C))
 OBJS	:=	$(SRCS:.c=.o)
 
 BSRCS_C	:=	pipex_bonus.c \
-				utils_bonus.c
+				utils_bonus.c \
+				heredoc_bonus.c
 
 SRCBDIR	:=	./sources_bonus/
 
