@@ -6,11 +6,13 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 13:38:33 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/02/06 11:31:17 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:55:42 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+
+#include <errno.h>
 
 int	ft_open(char *file, t_flag flag)
 {
@@ -52,27 +54,28 @@ char	*ft_find_env_path(char **envp)
 char	*ft_get_path(char *cmd, char **envp)
 {
 	char	**cmd_elements;
-	char	*all_env_paths;
+	char	**sep_env_paths;
+	char	*tmp;
 	char	*cmd_full_path;
 	int		i;
 
-	all_env_paths = ft_find_env_path(envp);
-	envp = ft_split(all_env_paths, ':');
+	sep_env_paths = ft_split(ft_find_env_path(envp), ':');
 	cmd_elements = ft_split(cmd, ' ');
-	i = 0;
-	while (envp[i])
+	i = -1;
+	while (sep_env_paths[++i])
 	{
-		envp[i] = ft_strjoin(envp[i], "/");
-		cmd_full_path = ft_strjoin(envp[i], cmd);
+		tmp = ft_strjoin(sep_env_paths[i], "/");
+		cmd_full_path = ft_strjoin(tmp, cmd);
+		free(tmp);
 		if (access(cmd_full_path, F_OK | X_OK) == 0)
 		{
-			// ft_free_char_tab(envp);
+			ft_free_char_tab(sep_env_paths);
 			ft_free_char_tab(cmd_elements);
 			return (cmd_full_path);
 		}
-		i++;
+		free(cmd_full_path);
 	}
-	ft_free_char_tab(envp);
+	ft_free_char_tab(sep_env_paths);
 	ft_free_char_tab(cmd_elements);
 	return (cmd);
 }

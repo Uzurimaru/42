@@ -1,117 +1,77 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 14:29:44 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/12/07 11:21:57 by rwintgen         ###   ########.fr       */
+/*   Created: 2023/12/06 10:28:00 by hbelle            #+#    #+#             */
+/*   Updated: 2024/02/17 11:56:08 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*get_next_line(int fd)
+char	*ft_loop(int bytes, char *buff, int fd)
 {
-	static char	*str[1024];
-	char		*line;
-
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	str[fd] = ft_buftostr(str[fd], fd);
-	if (!str[fd])
-		return (NULL);
-	line = ft_getline(str[fd]);
-	str[fd] = ft_clear(str[fd]);
-	return (line);
-}
-
-char	*joinandfree(char *str, char *buf)
-{
-	char	*tmp;
-
-	tmp = ft_strjoin((const char *)str, (const char *)buf);
-	free(str);
-	return (tmp);
-}
-
-char	*ft_buftostr(char *str, int fd)
-{
-	int		chrd;
-	char	*buf;
-
-	buf = ft_calloc(sizeof(char), BUFFER_SIZE + 1);
-	chrd = 1;
-	if (!str)
-		str = ft_calloc(sizeof(char), 1);
-	while (chrd != 0 && !ft_strchr(buf, '\n'))
-	{
-		chrd = read(fd, buf, BUFFER_SIZE);
-		if (chrd == -1)
-		{
-			free(str);
-			free(buf);
-			return (NULL);
-		}
-		buf[chrd] = '\0';
-		str = joinandfree(str, buf);
-	}
-	free(buf);
-	return (str);
-}
-
-char	*ft_getline(char *str)
-{
-	int		i;
 	char	*line;
 
-	i = 0;
-	if (!str[i])
+	line = ft_strgdup_gnl(buff);
+	if (!line)
 		return (NULL);
-	while (str[i] && str[i] != '\n')
-		i++;
-	line = ft_calloc(sizeof(char), (i + 2));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (bytes != 0 && ft_checkline(line) == 0)
 	{
-		line[i] = str[i];
-		i++;
+		bytes = read(fd, buff, BUFFER_SIZE);
+		if (bytes < 0)
+		{
+			free(line);
+			return (NULL);
+		}
+		buff[bytes] = '\0';
+		line = ft_strjoin_gnl(line, buff);
+		if (!line)
+		{
+			free(line);
+			return (NULL);
+		}
 	}
-	if (str[i] == '\n')
-	{
-		line[i] = str[i];
-		i++;
-	}
-	line[i] = '\0';
 	return (line);
 }
 
-char	*ft_clear(char *str)
+void	ft_nextline(char *str)
 {
-	int		i;
-	int		j;
-	char	*nstr;
+	size_t	i;
+	size_t	j;
 
-	if (!str)
-		return (NULL);
 	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (str[i] != '\n' && str[i] != 0)
 		i++;
-	if (!str[i])
+	if (str[i] == '\n')
+		i++;
+	j = 0;
+	while (str[i + j])
 	{
-		free(str);
+		str[j] = str[i + j];
+		j++;
+	}
+	str[j] = 0;
+}
+
+char	*get_next_line(int fd)
+{
+	static char		buff[BUFFER_SIZE + 1];
+	int				bytes;
+	char			*line;
+
+	bytes = 1;
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	line = ft_loop(bytes, buff, fd);
+	ft_nextline(buff);
+	if (!line || line[0] == '\0')
+	{
+		free(line);
 		return (NULL);
 	}
-	nstr = ft_calloc(sizeof(char), ft_strlen(str) - i + 1);
-	if (!nstr)
-		return (NULL);
-	i++;
-	j = 0;
-	while (str[i])
-		nstr[j++] = str[i++];
-	free (str);
-	return (nstr);
+	return (line);
 }

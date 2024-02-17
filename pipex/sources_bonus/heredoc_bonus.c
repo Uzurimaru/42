@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:16:15 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/02/12 15:20:54 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/02/17 12:22:45 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,10 @@ void	ft_write_heredoc(char **argv, int *pipefd)
 	{
 		ft_printf("heredoc> ");
 		line = get_next_line(0);
-		if (line == NULL)
-			break ;
-			//line = ft_strdup("");
 		if (!(ft_strncmp(line, argv[2], sep_len)) && line[sep_len] == '\n')
 		{
 			free(line);
+			close(pipefd[1]);
 			exit(8);
 		}
 		ft_putstr_fd(line, pipefd[1]);
@@ -36,7 +34,7 @@ void	ft_write_heredoc(char **argv, int *pipefd)
 	}
 }
 
-void	ft_read_heredoc(char **argv)
+void	ft_read_heredoc(char **argv, int fd_outfile)
 {
 	int		pipefd[2];
 	int		pipe_ret;
@@ -49,11 +47,24 @@ void	ft_read_heredoc(char **argv)
 	if (pid < 0)
 		exit(7);
 	if (pid == 0)
+	{
+		close(fd_outfile);
 		ft_write_heredoc(argv, pipefd);
+	}
 	else
 	{
 		close(pipefd[1]);
 		dup2(pipefd[0], 0);
+		close(pipefd[0]);
 		wait(NULL);
 	}
+}
+
+void	ft_handle_heredoc(int argc, char **argv, int *arg_cursor, int *fd_out)
+{
+	*arg_cursor += 1;
+	if (argc < 6)
+		ft_error_msg(2);
+	*fd_out = ft_open(argv[argc - 1], (t_flag)2);
+	ft_read_heredoc(argv, *fd_out);
 }

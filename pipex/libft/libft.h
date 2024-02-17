@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:22:03 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/02/05 16:07:41 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/02/17 12:00:56 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,10 @@ int			ft_printfptr(unsigned long n, char *base, int index);
 #  define BUFFER_SIZE 1
 # endif
 
+int			ft_end_ofthe_line(char *str);
+int			ft_checkline(char *str);
+char		*ft_strgdup_gnl(char *buff);
+char		*ft_strjoin_gnl(char *line, char *buff);
 char		*get_next_line(int fd);
-char		*joinandfree(char *str, char *buf);
-char		*ft_buftostr(char *str, int fd);
-char		*ft_getline(char *str);
-char		*ft_clear(char *str);
 
 #endif

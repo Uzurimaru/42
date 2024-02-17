@@ -6,7 +6,7 @@
 #    By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:30:27 by rwintgen          #+#    #+#              #
-#    Updated: 2024/02/05 15:45:33 by rwintgen         ###   ########.fr        #
+#    Updated: 2024/02/17 11:53:32 by rwintgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ SRCS	= ft_atoi.c \
 		ft_printf/ft_printfnbru.c \
 		ft_printf/ft_printfptr.c \
 		ft_printf/ft_printfstr.c \
+		get_next_line_utils.c \
 		get_next_line.c \
 		ft_free_char_tab.c
 
