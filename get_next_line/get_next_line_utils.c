@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:30:07 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/11/20 18:10:21 by rwintgen         ###   ########.fr       */
+/*   Updated: 2023/12/04 12:11:17 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (start);
 }
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		i;
 	int		j;
@@ -59,7 +59,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	if (!s1)
 		return (NULL);
 	combsize = ft_strlen(s1) + ft_strlen(s2) + 1;
-	combstr = ft_calloc(sizeof(char), combsize);
+	combstr = malloc(sizeof(char) * combsize);
 	if (!combstr)
 		return (NULL);
 	i = 0;
@@ -74,6 +74,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		combstr[i + j] = s2[j];
 		j++;
 	}
+	combstr[i + j] = '\0';
 	return (combstr);
 }
 

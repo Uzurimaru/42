@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:29:44 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/11/17 15:34:16 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/02/17 11:26:46 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,11 @@ char	*ft_getline(char *str)
 		i++;
 	}
 	if (str[i] == '\n')
+	{
 		line[i] = str[i];
+		i++;
+	}
+	line[i] = '\0';
 	return (line);
 }
 
