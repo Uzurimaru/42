@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   utils2_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:59:56 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/31 16:50:16 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:21:48 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	ft_init_map(t_map *map, char **argv)
 	else
 		map->proj = 0;
 	map->cam.zoom = 5;
-	map->cam.shift_x = map->width / 1;
-	map->cam.shift_y = map->height / 6;
+	map->cam.shift_x = ((map->win_w - map->width) / 2) / map->cam.zoom;
+	map->cam.shift_y = ((map->win_h - map->width) / 2) / map->cam.zoom;
 	map->cam.scale = 0.12;
 	map->col_shift = 0;
 	map->mlx_ptr = mlx_init(map->win_w, map->win_h, "FdF", true);

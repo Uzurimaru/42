@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   parse_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:34:27 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/01/31 16:07:40 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:59:20 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	ft_pop_alt(int *alt_num, char *line)
 
 	splitted = ft_split(line, ' ');
 	i = 0;
-	while (splitted[i] && !ft_strchr(splitted[i], '\n'))
+	while (splitted[i])
 	{
 		alt_num[i] = ft_atoi(splitted[i]);
 		free(splitted[i]);
