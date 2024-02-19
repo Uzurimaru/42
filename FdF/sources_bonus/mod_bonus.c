@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 14:43:17 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/02/19 16:23:40 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:34:28 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_mod_scroll(double xdelta, double ydelta, void *param)
 	(void) xdelta;
 	if (ydelta > 0)
 		map_c->cam.zoom += 1;
-	if (ydelta < 0)
+	if (ydelta < 0 && map_c->cam.zoom > 1)
 		map_c->cam.zoom -= 1;
 	ft_rerender(map_c);
 	ft_draw_map(map_c);
