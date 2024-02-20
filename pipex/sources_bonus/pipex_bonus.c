@@ -6,15 +6,13 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:06:55 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/02/17 11:59:24 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:37:40 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
 // TODO leaks when invalid command (OK if coming from commands)
-
-// clear && valgrind --show-leak-kinds=all --leak-check=full --track-origins=yes --track-fds=yes --trace-children=yes ./pipex_bonus infile "cat" "grep TEST" "wc -l" outfile
 
 int	main(int argc, char **argv, char **envp)
 {
