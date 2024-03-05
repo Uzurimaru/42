@@ -6,12 +6,11 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:06:55 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/02/16 15:58:11 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/05 12:12:45 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-#include <stdio.h>
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -19,13 +18,11 @@ int	main(int argc, char **argv, char **envp)
 	int		pipe_ret;
 	pid_t	pid;
 
-	if (argc != 5)
-	{
-		ft_putstr_fd("./pipex infile cmd1 cmd2 outfile\n", 2);
-		exit(1);
-	}
+	ft_basic_check(argc, argv, envp);
+	if (access(argv[4], F_OK) == -1)
+		ft_open(argv[4], 1);
 	if (access(argv[1], R_OK) == -1 || access(argv[4], R_OK | W_OK) == -1)
-		exit(11);
+		exit(6);
 	pipe_ret = pipe(pipefd);
 	if (pipe_ret != 0)
 		exit(2);

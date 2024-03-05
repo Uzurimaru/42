@@ -6,13 +6,11 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:06:55 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/02/19 10:37:40 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/05 12:10:55 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
-
-// TODO leaks when invalid command (OK if coming from commands)
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -21,7 +19,7 @@ int	main(int argc, char **argv, char **envp)
 	int		arg_cursor;
 
 	arg_cursor = 2;
-	ft_basic_check(argc, argv);
+	ft_basic_check(argc, argv, envp);
 	if (!(ft_strcmp(argv[1], "here_doc")))
 		ft_handle_heredoc(argc, argv, &arg_cursor, &fd_outfile);
 	else

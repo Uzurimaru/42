@@ -6,13 +6,13 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 13:38:33 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/02/16 15:55:42 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/05 12:06:59 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-#include <errno.h>
+// #include <errno.h>
 
 int	ft_open(char *file, t_flag flag)
 {
@@ -78,4 +78,32 @@ char	*ft_get_path(char *cmd, char **envp)
 	ft_free_char_tab(sep_env_paths);
 	ft_free_char_tab(cmd_elements);
 	return (cmd);
+}
+
+void	ft_err_msg(int err_id)
+{
+	if (err_id == 1)
+		ft_putstr_fd("pipex: ./pipex infile cmd1 cmd2 outfile\n", 2);
+	if (err_id == 7)
+		ft_putstr_fd("pipex: missing environment variables\n", 2);
+	if (err_id == 8 || err_id == 9)
+		ft_putstr_fd("pipex: invalid command syntax\n", 2);
+	if (err_id != -1)
+		exit(err_id);
+}
+
+void	ft_basic_check(int argc, char **argv, char **envp)
+{
+	int	err_id;
+
+	err_id = -1;
+	if (envp == NULL || envp[0] == NULL)
+		err_id = 7;
+	else if (argc != 5)
+		err_id = 1;
+	else if (!(argv[2][0]) || !(argv[3][0]))
+		err_id = 8;
+	else if (argv[2][0] == ' ' || argv[3][0] == ' ')
+		err_id = 9;
+	ft_err_msg(err_id);
 }

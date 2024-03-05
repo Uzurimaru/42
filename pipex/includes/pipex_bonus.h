@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 13:32:26 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/02/16 16:09:31 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/04 10:06:44 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
@@ -36,6 +35,6 @@ void	ft_read_heredoc(char **argv, int fd_outfile);
 void	ft_create_pipe(char *cmd, char **envp, int fd_outfile);
 void	ft_error_msg(int err_id);
 void	ft_handle_heredoc(int argc, char **argv, int *arg_cursor, int *fd_out);
-void	ft_basic_check(int argc, char **argv);
+void	ft_basic_check(int argc, char **argv, char **envp);
 
 #endif

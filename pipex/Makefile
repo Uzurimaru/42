@@ -6,7 +6,7 @@
 #    By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 13:26:49 by rwintgen          #+#    #+#              #
-#    Updated: 2024/02/16 17:34:36 by rwintgen         ###   ########.fr        #
+#    Updated: 2024/03/05 11:07:49 by rwintgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ OBJS	:=	$(SRCS:.c=.o)
 BSRCS_C	:=	pipex_bonus.c \
 				utils_bonus.c \
 				heredoc_bonus.c \
-				utils2_bonus.c
+				err_bonus.c
 
 SRCBDIR	:=	./sources_bonus/
 
