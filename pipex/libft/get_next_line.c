@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 10:28:00 by hbelle            #+#    #+#             */
-/*   Updated: 2024/02/17 11:56:08 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:40:10 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ char	*ft_loop(int bytes, char *buff, int fd)
 		buff[bytes] = '\0';
 		line = ft_strjoin_gnl(line, buff);
 		if (!line)
-		{
-			free(line);
 			return (NULL);
-		}
 	}
 	return (line);
 }

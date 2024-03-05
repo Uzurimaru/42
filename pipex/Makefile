@@ -6,7 +6,7 @@
 #    By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 13:26:49 by rwintgen          #+#    #+#              #
-#    Updated: 2024/03/05 11:07:49 by rwintgen         ###   ########.fr        #
+#    Updated: 2024/03/05 12:50:44 by rwintgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ CC		:=	gcc
 
 SRCS_C	:=	pipex.c \
 				utils.c \
-				process.c
+				process.c \
+				err.c
 
 SRCDIR	:=	./sources/
 

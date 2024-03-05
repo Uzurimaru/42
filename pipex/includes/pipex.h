@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 13:32:26 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/03/05 11:40:54 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/05 12:51:29 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int		ft_open(char *file, t_flag flag);
 char	*ft_find_env_path(char **envp);
 char	*ft_get_path(char *cmd, char **envp);
 void	ft_basic_check(int argc, char **argv, char **envp);
+void	ft_err_msg(int err_id);
 
 #endif
