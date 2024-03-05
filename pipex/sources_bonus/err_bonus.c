@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 11:12:58 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/03/05 17:23:14 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:34:05 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	ft_error_msg(int err_id)
 		ft_putstr_fd("pipex: infile does not exist\n", 2);
 	exit(err_id);
 }
-
 
 void	ft_basic_check(int argc, char **argv, char **envp)
 {
