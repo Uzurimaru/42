@@ -63,3 +63,11 @@ __I haven't completed this project yet, but you can check out what I did so far 
 Push_swap is a program which goal is to sort a set of random integers by ascending order in the least amount of operations as possible using 2 stacks. Completed by implementing [A. Yigit Ogun](https://github.com/ayogun)'s Turk Algorithm.
 
 __My push_swap passed with final grade of 100/100. Check out my work [here](https://github.com/rwintgen/42/tree/main/push_swap).__
+
+-----
+
+![42 (6)](https://github.com/rwintgen/42/assets/150167832/ac326c3c-e203-4474-8fb2-de89cecfe5c5)
+#### Minishell
+Minishell aims to replicate basic features of the SH and BASH shells. Not POSIX compliant.
+
+__I haven't completed this project yet.__
