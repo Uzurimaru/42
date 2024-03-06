@@ -46,7 +46,7 @@ I'm afraid you're gonna have to figure this one out by yourself. __You can check
 #### FdF
 The goal of FdF is to parse a 2D map of integers of variable sizes and render them in a 3D window using the MiniLibX library.
 
-__I haven't completed this project yet, but you can check out what I did so far [here](https://github.com/rwintgen/42/tree/main/FdF).__
+__My FdF passed with final grade of 100/100. Check out my work [here](https://github.com/rwintgen/42/tree/main/FdF).__
 
 -----
 
