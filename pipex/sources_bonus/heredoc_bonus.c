@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 13:16:15 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/03/04 10:05:03 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:48:05 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ void	ft_handle_heredoc(int argc, char **argv, int *arg_cursor, int *fd_out)
 	*arg_cursor += 1;
 	if (argc < 6)
 		ft_error_msg(2);
-	*fd_out = ft_open(argv[argc - 1], (t_flag)2);
+	*fd_out = ft_open(argv[argc - 1], flag_heredoc);
 	ft_read_heredoc(argv, *fd_out);
 }

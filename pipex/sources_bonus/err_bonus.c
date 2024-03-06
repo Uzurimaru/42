@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 11:12:58 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/03/05 17:45:58 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:20:17 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ void	ft_basic_check(int argc, char **argv, char **envp)
 	{
 		if (!(argv[i][0]) || argv[i][0] == ' ') // No empty arguments...
 			ft_error_msg(8);
-		if (++i == 2 && ft_strcmp("here_doc", argv[1]) != 0) // except heredoc limiter
+		if (++i == 2 && ft_strcmp("here_doc", argv[1]) == 0) // except heredoc limiter
 			i++;
+		// TODO fix empty heredoc limiter
 	}
 	if (ft_strcmp("here_doc", argv[1]) != 0 && access(argv[1], F_OK) == -1) // first argument is an infile and exists
 		ft_error_msg(11);

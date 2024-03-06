@@ -6,13 +6,13 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 12:50:21 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/03/05 17:25:00 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:04:46 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-int	ft_check_path(char **envp)
+int	ft_check_path(char **envp) // checks that $PATH is set
 {
 	int		i;
 	int		j;

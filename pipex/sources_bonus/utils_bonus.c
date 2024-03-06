@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 13:38:33 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/03/04 10:05:06 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:34:08 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,30 +96,30 @@ void	ft_exec_cmd(char *cmd, char **envp)
 	}
 }
 
-void	ft_create_pipe(char *cmd, char **envp, int fd_outfile)
+void	ft_create_pipe(char *cmd, char **envp, int fd_outfile) // pipes command output to another pipe
 {
 	int	pipefd[2];
 	int	pipe_ret;
 	int	pid;
 
-	pipe_ret = pipe(pipefd);
+	pipe_ret = pipe(pipefd); // create pipe
 	if (pipe_ret < 0)
 		exit(9);
 	pid = fork();
 	if (pid < 0)
 		exit(10);
-	else if (pid == 0)
+	else if (pid == 0) // if child process
 	{
-		close(fd_outfile);
-		close(pipefd[0]);
-		dup2(pipefd[1], 1);
-		close(pipefd[1]);
-		ft_exec_cmd(cmd, envp);
+		close(fd_outfile); // close outfile since we write to another pipe's read end
+		close(pipefd[0]); // close read end of pipe
+		dup2(pipefd[1], 1); // replace stdout with write end of pipe
+		close(pipefd[1]); // close write end of pipe
+		ft_exec_cmd(cmd, envp); // exec command whose output will write end of pipe
 	}
-	else
+	else // if parent process
 	{
-		close(pipefd[1]);
-		dup2(pipefd[0], 0);
-		close(pipefd[0]);
+		close(pipefd[1]); // close write end of pipe since parent will reand from child's write pipe
+		dup2(pipefd[0], 0); // replace stdin by read end of pipe
+		close(pipefd[0]); // close read end of pipe
 	}
 }
