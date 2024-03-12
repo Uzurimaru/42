@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+         #
+#    By: romain <romain@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/04 13:26:49 by rwintgen          #+#    #+#              #
-#    Updated: 2024/03/05 12:50:44 by rwintgen         ###   ########.fr        #
+#    Created: 2024/03/12 16:18:08 by romain            #+#    #+#              #
+#    Updated: 2024/03/12 17:21:18 by romain           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:=	pipex
 
-CFLAGS	:=	-Wall -Wextra -Werror -g -no-pie
+CFLAGS	:=	-Wall -Wextra -Werror -g
 
 LIBPATH	:=	./libft/
 
@@ -26,8 +26,7 @@ CC		:=	clang
 
 SRCS_C	:=	pipex.c \
 				utils.c \
-				process.c \
-				err.c
+				exec.c
 
 SRCDIR	:=	./sources/
 
@@ -37,8 +36,7 @@ OBJS	:=	$(SRCS:.c=.o)
 
 BSRCS_C	:=	pipex_bonus.c \
 				utils_bonus.c \
-				heredoc_bonus.c \
-				err_bonus.c
+				heredoc_bonus.c
 
 SRCBDIR	:=	./sources_bonus/
 
