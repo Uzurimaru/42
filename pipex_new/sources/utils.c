@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:20:13 by romain            #+#    #+#             */
-/*   Updated: 2024/03/12 19:27:39 by romain           ###   ########.fr       */
+/*   Updated: 2024/03/13 13:04:55 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*ft_get_path(char *cmd, char **envp)
 
 	sep_env_paths = ft_split(ft_find_env_path(envp), ':');
 	i = 0;
-	while (sep_env_paths[i]) 
+	while (sep_env_paths && sep_env_paths[i]) 
 	{
 		tmp = ft_strjoin(sep_env_paths[i], "/");
 		cmd_full_path = ft_strjoin(tmp, cmd); // add the command
