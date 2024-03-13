@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 13:38:33 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/03/11 11:38:58 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:40:43 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ char	*ft_get_path(char *cmd, char **envp)
 		if (access(cmd_full_path, F_OK | X_OK) == 0)
 		{
 			ft_free_char_tab(sep_env_paths);
-			ft_free_char_tab(cmd_elements);
+			// ft_free_char_tab(cmd_elements);
 			return (cmd_full_path);
 		}
 		free(cmd_full_path);
 	}
 	ft_free_char_tab(sep_env_paths);
-	ft_free_char_tab(cmd_elements);
+	// ft_free_char_tab(cmd_elements);
 	return (cmd);
 }
 

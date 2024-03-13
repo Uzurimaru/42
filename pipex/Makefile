@@ -6,13 +6,13 @@
 #    By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 13:26:49 by rwintgen          #+#    #+#              #
-#    Updated: 2024/03/05 12:50:44 by rwintgen         ###   ########.fr        #
+#    Updated: 2024/03/13 12:36:51 by rwintgen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:=	pipex
 
-CFLAGS	:=	-Wall -Wextra -Werror -g -no-pie
+CFLAGS	:=	-Wall -Wextra -Werror -g 
 
 LIBPATH	:=	./libft/
 
