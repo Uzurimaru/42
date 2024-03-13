@@ -6,18 +6,30 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:20:13 by romain            #+#    #+#             */
-/*   Updated: 2024/03/12 19:27:23 by romain           ###   ########.fr       */
+/*   Updated: 2024/03/13 17:32:19 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
+int	check_argc(int argc, char **argv)
+{
+	int	min_arg;
+
+	min_arg = 5;
+	if (argv[1] && !ft_strcmp(argv[1], "here_doc"))
+		min_arg++;
+	if (argc < min_arg)
+		return (0);
+	return (1);
+}
+
 int	err_msg(int err_id)
 {
 	if (err_id == ERR_ARGC)
-		ft_putstr_fd("pipex: need 4 arguments\n", 2);
+		ft_putstr_fd("pipex: need more arguments\n", 2);
 	if (err_id == ERR_INFILE)
-		ft_putstr_fd("pipex: can't access infil\ne", 2);
+		ft_putstr_fd("pipex: can't access infile\n", 2);
 	if (err_id == ERR_OUTFILE)
 		ft_putstr_fd("pipex: can't access outfile\n", 2);
 	if (err_id == ERR_PIPE)
@@ -25,22 +37,11 @@ int	err_msg(int err_id)
 	if (err_id == ERR_EXEC)
 		ft_putstr_fd("pipex: command not found:\n", 2);
 	if (err_id == ERR_HEREDOC)
-		ft_putstr_fd("pipex: heredoc error\n");
+		ft_putstr_fd("pipex: heredoc error\n", 2);
 	return (err_id);
 }
 
-int	ft_open(char *file, int *fd, int flag)
-{
-	if (flag == FLAG_READ)
-		*fd = open(file, O_RDONLY);
-	else if (flag == FLAG_WRITE)
-		*fd = open(file, O_TRUNC | O_CREAT | O_RDWR, 0644);
-	else if (flag == FLAG_HEREDOC)
-		*fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	return (*fd);
-}
-
-char	*ft_find_env_path(char **envp)
+static char	*ft_find_env_path(char **envp)
 {
 	int		i;
 	int		j;

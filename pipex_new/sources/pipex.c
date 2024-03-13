@@ -6,12 +6,14 @@
 /*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:19:12 by romain            #+#    #+#             */
-/*   Updated: 2024/03/12 18:17:41 by romain           ###   ########.fr       */
+/*   Updated: 2024/03/13 17:58:07 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 #include <stdio.h>
+
+// TODO leaks when does not find PATH
 
 int	main(int argc, char **argv, char **envp)
 {
