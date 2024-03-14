@@ -5,66 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 13:16:15 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/03/06 14:48:05 by rwintgen         ###   ########.fr       */
+/*   Created: 2024/03/13 15:33:25 by romain            #+#    #+#             */
+/*   Updated: 2024/03/14 15:57:02 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
-void	ft_write_heredoc(char **argv, int *pipefd)
+int	unlink_err(char *file)
 {
-	char	*line;
-	int		sep_len;
-
-	close(pipefd[0]);
-	sep_len = ft_strlen(argv[2]);
-	while (1)
-	{
-		ft_printf("heredoc> ");
-		line = get_next_line(0);
-		if (!(ft_strncmp(line, argv[2], sep_len)) && line[sep_len] == '\n')
-		{
-			free(line);
-			close(pipefd[1]);
-			exit(8);
-		}
-		ft_putstr_fd(line, pipefd[1]);
-		free(line);
-	}
+	unlink(file);
+	return (err_msg(ERR_HEREDOC));
 }
 
-void	ft_read_heredoc(char **argv, int fd_outfile)
+int	handle_heredoc(char **argv, int *filefd)
 {
-	int		pipefd[2];
-	int		pipe_ret;
-	pid_t	pid;
+	int		hd_buf_fd;
+	char	*line;
 
-	pipe_ret = pipe(pipefd);
-	if (pipe_ret < 0)
-		exit(6);
-	pid = fork();
-	if (pid < 0)
-		exit(7);
-	if (pid == 0)
-	{
-		close(fd_outfile);
-		ft_write_heredoc(argv, pipefd);
-	}
+	if (ft_strcmp(argv[1], "here_doc") != 0) // if no heredoc, return 0
+		return (0);
 	else
 	{
-		close(pipefd[1]);
-		dup2(pipefd[0], 0);
-		close(pipefd[0]);
-		wait(NULL);
+		if (ft_open(".heredoc_buf", &hd_buf_fd, FLAG_HEREDOC) < 0)
+			exit(err_msg(ERR_HEREDOC));
+		while (1)
+		{
+			write(1, "heredoc> ", 9);
+			line = get_next_line(0);
+			if (!ft_strncmp(line, argv[2], ft_strlen(argv[2])) && line[ft_strlen(argv[2])] == '\n')
+				break;
+			ft_putstr_fd(line, hd_buf_fd);
+			free(line);
+		}
+		free(line);
+		close(hd_buf_fd);
+		if (ft_open(".heredoc_buf", filefd, FLAG_READ) < 0)
+			exit(unlink_err(".heredoc_buf"));
 	}
-}
-
-void	ft_handle_heredoc(int argc, char **argv, int *arg_cursor, int *fd_out)
-{
-	*arg_cursor += 1;
-	if (argc < 6)
-		ft_error_msg(2);
-	*fd_out = ft_open(argv[argc - 1], flag_heredoc);
-	ft_read_heredoc(argv, *fd_out);
+	return (1);
 }

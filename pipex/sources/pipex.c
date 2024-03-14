@@ -5,28 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 16:06:55 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/03/06 14:49:32 by rwintgen         ###   ########.fr       */
+/*   Created: 2024/03/12 16:19:12 by romain            #+#    #+#             */
+/*   Updated: 2024/03/14 10:59:29 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+#include <stdio.h>
 
 int	main(int argc, char **argv, char **envp)
 {
 	int		pipefd[2];
-	int		pipe_ret;
-	pid_t	pid;
+	int		filefd[2];
+	pid_t	pid[2];
 
-	ft_basic_check(argc, argv, envp); // error mgmt function
-	pipe_ret = pipe(pipefd); // pipe
-	if (pipe_ret != 0) // if pipe fails
-		exit(2);
-	pid = fork();
-	if (pid < 0) // if fork fails
-		exit(3);
-	if (pid == 0) 
-		ft_child(argv, pipefd, envp); // exec child process
-	ft_parent(argv, pipefd, envp); // exec parent process
+	if (argc != 5)
+		return (err_msg(ERR_ARGC));
+	if (ft_open(argv[1], &filefd[0], FLAG_READ) < 0)
+		return (err_msg(ERR_INFILE));
+	if (ft_open(argv[4], &filefd[1], FLAG_WRITE) < 0)
+		return (err_msg(ERR_OUTFILE));
+	if (pipe(pipefd) < 0)
+		return (err_msg(ERR_PIPE));
+	pid[0] = fork();
+	if (!pid[0])
+		exec_cmd_1(argv[2], pipefd, filefd, envp);
+	pid[1] = fork();
+	if (!pid[1])
+		exec_cmd_2(argv[3], pipefd, filefd, envp);
+	close(pipefd[0]);
+	close(pipefd[1]);
+	waitpid(pid[0], NULL, 0);
+	waitpid(pid[1], NULL, 0);
+	close(filefd[0]);
+	close(filefd[1]);
 	return (0);
 }

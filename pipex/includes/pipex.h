@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 13:32:26 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/03/05 12:51:29 by rwintgen         ###   ########.fr       */
+/*   Created: 2024/03/12 16:17:14 by romain            #+#    #+#             */
+/*   Updated: 2024/03/12 17:46:11 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,25 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
-typedef enum e_flag
+typedef enum	e_err
 {
-	flag_read,
-	flag_write
-}	t_flag;
+	ERR_ARGC,
+	ERR_INFILE,
+	ERR_OUTFILE,
+	ERR_PIPE,
+	ERR_EXEC
+}				t_err;
 
-void	ft_exec_cmd(char *cmd, char **envp);
-void	ft_parent(char **argv, int *pipefd, char **envp);
-void	ft_child(char **argv, int *pipefd, char **envp);
+typedef enum	e_mod
+{
+	FLAG_READ,
+	FLAG_WRITE
+}				t_mod;
 
-int		ft_open(char *file, t_flag flag);
-char	*ft_find_env_path(char **envp);
+int		err_msg(int err_id);
+int		ft_open(char *file, int *fd, int flag);
 char	*ft_get_path(char *cmd, char **envp);
-void	ft_basic_check(int argc, char **argv, char **envp);
-void	ft_err_msg(int err_id);
+void	exec_cmd_1(char *cmd, int *pipefd, int *filefd, char **envp);
+void	exec_cmd_2(char *cmd, int *pipefd, int *filefd, char **envp);
 
 #endif

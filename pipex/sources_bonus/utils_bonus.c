@@ -3,31 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 13:38:33 by rwintgen          #+#    #+#             */
-/*   Updated: 2024/03/11 11:40:43 by rwintgen         ###   ########.fr       */
+/*   Created: 2024/03/12 16:20:13 by romain            #+#    #+#             */
+/*   Updated: 2024/03/13 17:32:19 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
-int	ft_open(char *file, t_flag flag)
+int	check_argc(int argc, char **argv)
 {
-	int	fd;
+	int	min_arg;
 
-	if (flag == flag_read)
-		fd = open(file, O_RDONLY, 0777);
-	else if (flag == flag_write)
-		fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	else if (flag == flag_heredoc)
-		fd = open(file, O_WRONLY | O_CREAT | O_APPEND, 0777);
-	if (fd < 0)
-		exit(4);
-	return (fd);
+	min_arg = 5;
+	if (argv[1] && !ft_strcmp(argv[1], "here_doc"))
+		min_arg++;
+	if (argc < min_arg)
+		return (0);
+	return (1);
 }
 
-char	*ft_find_env_path(char **envp)
+int	err_msg(int err_id)
+{
+	if (err_id == ERR_ARGC)
+		ft_putstr_fd("pipex: need more arguments\n", 2);
+	if (err_id == ERR_INFILE)
+		ft_putstr_fd("pipex: can't access infile\n", 2);
+	if (err_id == ERR_OUTFILE)
+		ft_putstr_fd("pipex: can't access outfile\n", 2);
+	if (err_id == ERR_PIPE)
+		ft_putstr_fd("pipex: pipe failed\n", 2);
+	if (err_id == ERR_EXEC)
+		ft_putstr_fd("pipex: command not found:\n", 2);
+	if (err_id == ERR_HEREDOC)
+		ft_putstr_fd("pipex: heredoc error\n", 2);
+	return (err_id);
+}
+
+static char	*ft_find_env_path(char **envp)
 {
 	int		i;
 	int		j;
@@ -53,73 +67,26 @@ char	*ft_find_env_path(char **envp)
 
 char	*ft_get_path(char *cmd, char **envp)
 {
-	// char	**cmd_elements;
 	char	**sep_env_paths;
 	char	*tmp;
 	char	*cmd_full_path;
 	int		i;
 
 	sep_env_paths = ft_split(ft_find_env_path(envp), ':');
-	// cmd_elements = ft_split(cmd, ' ');
-	i = -1;
-	while (sep_env_paths[++i])
+	i = 0;
+	while (sep_env_paths[i]) 
 	{
 		tmp = ft_strjoin(sep_env_paths[i], "/");
-		cmd_full_path = ft_strjoin(tmp, cmd);
+		cmd_full_path = ft_strjoin(tmp, cmd); // add the command
 		free(tmp);
 		if (access(cmd_full_path, F_OK | X_OK) == 0)
 		{
 			ft_free_char_tab(sep_env_paths);
-			// ft_free_char_tab(cmd_elements);
 			return (cmd_full_path);
 		}
 		free(cmd_full_path);
+		i++;
 	}
 	ft_free_char_tab(sep_env_paths);
-	// ft_free_char_tab(cmd_elements);
-	return (cmd);
-}
-
-void	ft_exec_cmd(char *cmd, char **envp)
-{
-	char	*path_to_cmd;
-	char	**cmd_options;
-
-	cmd_options = ft_split(cmd, ' ');
-	path_to_cmd = ft_get_path(cmd_options[0], envp);
-	if (execve(path_to_cmd, cmd_options, envp) == -1)
-	{
-		ft_putstr_fd("pipex: command not found: ", 2);
-		ft_putendl_fd(cmd_options[0], 2);
-		ft_free_char_tab(cmd_options);
-		exit(5);
-	}
-}
-
-void	ft_create_pipe(char *cmd, char **envp, int fd_outfile) // pipes command output to another pipe
-{
-	int	pipefd[2];
-	int	pipe_ret;
-	int	pid;
-
-	pipe_ret = pipe(pipefd); // create pipe
-	if (pipe_ret < 0)
-		exit(9);
-	pid = fork();
-	if (pid < 0)
-		exit(10);
-	else if (pid == 0) // if child process
-	{
-		close(fd_outfile); // close outfile since we write to another pipe's read end
-		close(pipefd[0]); // close read end of pipe
-		dup2(pipefd[1], 1); // replace stdout with write end of pipe
-		close(pipefd[1]); // close write end of pipe
-		ft_exec_cmd(cmd, envp); // exec command whose output will write end of pipe
-	}
-	else // if parent process
-	{
-		close(pipefd[1]); // close write end of pipe since parent will reand from child's write pipe
-		dup2(pipefd[0], 0); // replace stdin by read end of pipe
-		close(pipefd[0]); // close read end of pipe
-	}
+	return(cmd);
 }
