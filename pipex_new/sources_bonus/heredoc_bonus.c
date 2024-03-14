@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:33:25 by romain            #+#    #+#             */
-/*   Updated: 2024/03/14 12:47:04 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:57:02 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	unlink_err(char *file)
 	return (err_msg(ERR_HEREDOC));
 }
 
-int	handle_heredoc(char **argv, int **filefd)
+int	handle_heredoc(char **argv, int *filefd)
 {
 	int		hd_buf_fd;
 	char	*line;
-	
+
 	if (ft_strcmp(argv[1], "here_doc") != 0) // if no heredoc, return 0
 		return (0);
 	else
@@ -40,7 +40,7 @@ int	handle_heredoc(char **argv, int **filefd)
 		}
 		free(line);
 		close(hd_buf_fd);
-		if (ft_open(".heredoc_buf", &(*filefd)[0], FLAG_READ) < 0)
+		if (ft_open(".heredoc_buf", filefd, FLAG_READ) < 0)
 			exit(unlink_err(".heredoc_buf"));
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:34:47 by romain            #+#    #+#             */
-/*   Updated: 2024/03/14 12:47:09 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:54:59 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int		ft_open(char *file, int *fd, int flag);
 int		check_argc(int argc, char **argv);
 char	*ft_get_path(char *cmd, char **envp);
 int		unlink_err(char *file);
-int		handle_heredoc(char **argv, int **filefd);
-void	set_inf_outf_fds(int **filefd, int argc, char **argv, int arg_cursor);
+int		handle_heredoc(char **argv, int *filefd);
+void	set_inf_outf_fds(int *filefd, int argc, char **argv, int arg_cursor);
 void	exec_piped_commands(char *cmd, char **envp, int *filefd);
 void	ft_exec_last(char *cmd, char **envp, int *filefd);
 
