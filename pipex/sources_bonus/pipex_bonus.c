@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:34:20 by romain            #+#    #+#             */
-/*   Updated: 2024/03/14 15:55:19 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/14 16:49:04 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv, char **envp)
 	dup2(filefd[0], 0);
 	close(filefd[0]);
 	while (++arg_cursor < argc - 2)
-		exec_piped_commands(argv[arg_cursor], envp, filefd);
+		exec_piped_commands(argv[arg_cursor], envp, filefd, argv);
 	if (!ft_strcmp(argv[1], "here_doc"))
 		unlink(".heredoc_buf");
 	ft_exec_last(argv[arg_cursor], envp, filefd);

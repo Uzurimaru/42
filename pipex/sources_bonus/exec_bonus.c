@@ -6,11 +6,21 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:13:29 by romain            #+#    #+#             */
-/*   Updated: 2024/03/14 11:17:16 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/14 16:53:17 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
+
+static void	ft_free_pipe(int fd_infile, int fd_outfile, char **argv)
+{
+
+}
+
+static void	ft_free_pipe(int fd_infile, int fd_outfile, char **argv)
+{
+	
+}
 
 static void	ft_exec_cmd(char *cmd, char **envp)
 {
@@ -27,16 +37,16 @@ static void	ft_exec_cmd(char *cmd, char **envp)
 	}
 }
 
-void	exec_piped_commands(char *cmd, char **envp, int *filefd)
+void	exec_piped_commands(char *cmd, char **envp, int *filefd, char **argv)
 {
 	int		pipefd[2];
 	pid_t	pid;
 
 	if (pipe(pipefd) < 0)
-		ft_printf("pipe failed\n"); //err_free_pipe close inf & outf, unlink heredoc, err_msg, exit
+		err_free_pipe(filefd[0], filefd[1], argv); // close inf & outf, unlink heredoc, err_msg, exit
 	pid = fork();
 	if (pid < 0)
-		ft_printf("fork failed\n"); // err_free_fork close inf & outf, unlink heredoc, err_msg, exit
+		err_free_fork // close inf & outf, unlink heredoc, err_msg, exit
 	else if (pid != 0) // if parent
 	{
 		close(pipefd[1]);
