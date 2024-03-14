@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:10:58 by romain            #+#    #+#             */
-/*   Updated: 2024/03/13 18:05:36 by romain           ###   ########.fr       */
+/*   Updated: 2024/03/14 12:47:15 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,25 @@ int	ft_open(char *file, int *fd, int flag)
 	return (*fd);
 }
 
-void set_inf_outf_fds(int **filefd, int argc, char **argv, int arg_cursor)
+void	set_inf_outf_fds(int **filefd, int argc, char **argv, int arg_cursor)
 {
 	int	fd_inf;
 	int	fd_outf;
-	
-    if (arg_cursor == 1) // open infile if no heredoc
+
+	if (arg_cursor == 1) // if no heredoc
+	{
 		fd_inf = ft_open(argv[arg_cursor], &(*filefd)[0], FLAG_READ);
-	else // keep as is
-		fd_inf = (*filefd)[0];
-    if (arg_cursor == 1) // open outfile with flag write if no heredoc
 		fd_outf = ft_open(argv[argc - 1], &(*filefd)[1], FLAG_WRITE);
-	else // else open outfile with flag heredoc
+	}
+	else // if heredoc present
+	{
+		fd_inf = (*filefd)[0];
 		fd_outf = ft_open(argv[argc - 1], &(*filefd)[1], FLAG_HEREDOC);
-    if (fd_inf < 0)
+	}
+	if (fd_inf < 0)
 		exit(err_msg(ERR_INFILE));
 	if (fd_outf < 0)
 		exit(err_msg(ERR_OUTFILE));
+	(*filefd)[0] = fd_inf;
+	(*filefd)[1] = fd_outf;
 }

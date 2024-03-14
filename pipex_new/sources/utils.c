@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:20:13 by romain            #+#    #+#             */
-/*   Updated: 2024/03/13 13:04:55 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/14 10:59:02 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	err_msg(int err_id)
 	if (err_id == ERR_PIPE)
 		ft_putstr_fd("pipex: pipe failed\n", 2);
 	if (err_id == ERR_EXEC)
-		ft_putstr_fd("pipex: command not found:\n", 2);
+		ft_putstr_fd("pipex: command not found: ", 2);
 	return (err_id);
 }
 
@@ -69,7 +69,9 @@ char	*ft_get_path(char *cmd, char **envp)
 
 	sep_env_paths = ft_split(ft_find_env_path(envp), ':');
 	i = 0;
-	while (sep_env_paths && sep_env_paths[i]) 
+	if (!sep_env_paths)
+		return (cmd);
+	while (sep_env_paths[i]) 
 	{
 		tmp = ft_strjoin(sep_env_paths[i], "/");
 		cmd_full_path = ft_strjoin(tmp, cmd); // add the command
@@ -83,5 +85,5 @@ char	*ft_get_path(char *cmd, char **envp)
 		i++;
 	}
 	ft_free_char_tab(sep_env_paths);
-	return(cmd);
+	return (cmd);
 }

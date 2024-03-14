@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:13:29 by romain            #+#    #+#             */
-/*   Updated: 2024/03/13 16:58:07 by romain           ###   ########.fr       */
+/*   Updated: 2024/03/14 11:17:16 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,19 @@ void	exec_piped_commands(char *cmd, char **envp, int *filefd)
 	pid = fork();
 	if (pid < 0)
 		ft_printf("fork failed\n"); // err_free_fork close inf & outf, unlink heredoc, err_msg, exit
-	else if (pid != 0) // if child
+	else if (pid != 0) // if parent
+	{
+		close(pipefd[1]);
+		dup2(pipefd[0], 0);
+		close(pipefd[0]);
+	}
+	else
 	{
 		close(filefd[1]);
 		close(pipefd[0]);
 		dup2(pipefd[1], 1);
 		close(pipefd[1]);
 		ft_exec_cmd(cmd, envp);
-	}
-	else
-	{
-		close(pipefd[1]);
-		dup2(pipefd[0], 0);
-		close(pipefd[0]);
 	}
 }
 
