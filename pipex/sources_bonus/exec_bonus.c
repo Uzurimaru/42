@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:13:29 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 10:37:52 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:31:05 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ void	exec_piped_commands(char *cmd, char **envp, int *filefd, char **argv)
 
 	if (pipe(pipefd) < 0)
 		err_free(filefd[0], filefd[1], argv, ERR_PIPE);
+	pid = fork();
 	if (pid < 0)
 		err_free(filefd[0], filefd[1], argv, ERR_FORK);
-	else if (pid != 0) // if parent
+	else if (pid != 0)
 	{
 		close(pipefd[1]);
 		dup2(pipefd[0], 0);

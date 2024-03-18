@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 15:33:25 by romain            #+#    #+#             */
-/*   Updated: 2024/03/14 15:57:02 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:46:35 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	handle_heredoc(char **argv, int *filefd)
 	int		hd_buf_fd;
 	char	*line;
 
-	if (ft_strcmp(argv[1], "here_doc") != 0) // if no heredoc, return 0
+	if (ft_strcmp(argv[1], "here_doc") != 0)
 		return (0);
 	else
 	{
@@ -33,8 +33,9 @@ int	handle_heredoc(char **argv, int *filefd)
 		{
 			write(1, "heredoc> ", 9);
 			line = get_next_line(0);
-			if (!ft_strncmp(line, argv[2], ft_strlen(argv[2])) && line[ft_strlen(argv[2])] == '\n')
-				break;
+			if (!ft_strncmp(line, argv[2], ft_strlen(argv[2])) && \
+				line[ft_strlen(argv[2])] == '\n')
+				break ;
 			ft_putstr_fd(line, hd_buf_fd);
 			free(line);
 		}

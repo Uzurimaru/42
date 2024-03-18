@@ -6,12 +6,15 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:19:12 by romain            #+#    #+#             */
-/*   Updated: 2024/03/14 10:59:29 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:33:59 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 #include <stdio.h>
+
+// clear && valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes ./pipex Makefile ls "cat -e" /dev/stdout
+// TODO infile open when no rights on outfile / outfile is folder
 
 int	main(int argc, char **argv, char **envp)
 {

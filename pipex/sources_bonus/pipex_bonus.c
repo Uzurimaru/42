@@ -6,13 +6,15 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:34:20 by romain            #+#    #+#             */
-/*   Updated: 2024/03/14 16:49:04 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:39:20 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
-// TODO .heredoc_buf does not delete
+// clear && valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes ./pipex_bonus Makefile ls "cat -e" /dev/stdout
+// TODO infile open when no rights on outfile / outfile is folder
+// TODO segfault when launched with valgrind && env -i / PATH unset
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -20,9 +22,9 @@ int	main(int argc, char **argv, char **envp)
 	int	arg_cursor;
 
 	arg_cursor = 1;
-	if (!check_argc(argc, argv)) // check argc
+	if (!check_argc(argc, argv))
 		return (err_msg(ERR_ARGC));
-	arg_cursor += handle_heredoc(argv, filefd); //handle heredoc, returns 0 if no heredoc
+	arg_cursor += handle_heredoc(argv, filefd);
 	set_inf_outf_fds(filefd, argc, argv, arg_cursor);
 	dup2(filefd[0], 0);
 	close(filefd[0]);

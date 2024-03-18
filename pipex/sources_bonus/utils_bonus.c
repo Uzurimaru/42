@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:20:13 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 10:40:21 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:41:49 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*ft_get_path(char *cmd, char **envp)
 
 	sep_env_paths = ft_split(ft_find_env_path(envp), ':');
 	i = 0;
-	while (sep_env_paths[i]) 
+	while (sep_env_paths[i])
 	{
 		tmp = ft_strjoin(sep_env_paths[i], "/");
 		cmd_full_path = ft_strjoin(tmp, cmd);
@@ -90,5 +90,5 @@ char	*ft_get_path(char *cmd, char **envp)
 		i++;
 	}
 	ft_free_char_tab(sep_env_paths);
-	return(cmd);
+	return (cmd);
 }
