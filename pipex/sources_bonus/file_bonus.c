@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:10:58 by romain            #+#    #+#             */
-/*   Updated: 2024/03/14 15:58:42 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:40:52 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	set_inf_outf_fds(int *filefd, int argc, char **argv, int arg_cursor)
 	int	fd_inf;
 	int	fd_outf;
 
-	if (arg_cursor == 1) // if no heredoc
+	if (arg_cursor == 1)
 	{
 		fd_inf = ft_open(argv[arg_cursor], filefd, FLAG_READ);
 		fd_outf = ft_open(argv[argc - 1], filefd + 1, FLAG_WRITE);
 	}
-	else // if heredoc present
+	else
 	{
 		fd_inf = (*filefd);
 		fd_outf = ft_open(argv[argc - 1], filefd + 1, FLAG_HEREDOC);

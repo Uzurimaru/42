@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:34:47 by romain            #+#    #+#             */
-/*   Updated: 2024/03/14 16:48:53 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:33:11 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef enum	e_err
 	ERR_INFILE,
 	ERR_OUTFILE,
 	ERR_PIPE,
+	ERR_FORK,
 	ERR_EXEC,
 	ERR_HEREDOC
 }				t_err;

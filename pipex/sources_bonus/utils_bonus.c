@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:20:13 by romain            #+#    #+#             */
-/*   Updated: 2024/03/13 17:32:19 by romain           ###   ########.fr       */
+/*   Updated: 2024/03/18 10:40:21 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	err_msg(int err_id)
 		ft_putstr_fd("pipex: can't access outfile\n", 2);
 	if (err_id == ERR_PIPE)
 		ft_putstr_fd("pipex: pipe failed\n", 2);
+	if (err_id == ERR_FORK)
+		ft_putstr_fd("pipex: fork failed\n", 2);
 	if (err_id == ERR_EXEC)
 		ft_putstr_fd("pipex: command not found:\n", 2);
 	if (err_id == ERR_HEREDOC)
@@ -77,7 +79,7 @@ char	*ft_get_path(char *cmd, char **envp)
 	while (sep_env_paths[i]) 
 	{
 		tmp = ft_strjoin(sep_env_paths[i], "/");
-		cmd_full_path = ft_strjoin(tmp, cmd); // add the command
+		cmd_full_path = ft_strjoin(tmp, cmd);
 		free(tmp);
 		if (access(cmd_full_path, F_OK | X_OK) == 0)
 		{

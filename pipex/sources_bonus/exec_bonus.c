@@ -6,20 +6,19 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:13:29 by romain            #+#    #+#             */
-/*   Updated: 2024/03/14 16:53:17 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:37:52 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
 
-static void	ft_free_pipe(int fd_infile, int fd_outfile, char **argv)
+static void	err_free(int fd_in, int fd_out, char **argv, int err_id)
 {
-
-}
-
-static void	ft_free_pipe(int fd_infile, int fd_outfile, char **argv)
-{
-	
+	close(fd_in);
+	close(fd_out);
+	if (!ft_strcmp(argv[1], "here_doc"))
+		unlink(".heredoc_buf");
+	exit(err_msg(err_id));
 }
 
 static void	ft_exec_cmd(char *cmd, char **envp)
@@ -43,10 +42,9 @@ void	exec_piped_commands(char *cmd, char **envp, int *filefd, char **argv)
 	pid_t	pid;
 
 	if (pipe(pipefd) < 0)
-		err_free_pipe(filefd[0], filefd[1], argv); // close inf & outf, unlink heredoc, err_msg, exit
-	pid = fork();
+		err_free(filefd[0], filefd[1], argv, ERR_PIPE);
 	if (pid < 0)
-		err_free_fork // close inf & outf, unlink heredoc, err_msg, exit
+		err_free(filefd[0], filefd[1], argv, ERR_FORK);
 	else if (pid != 0) // if parent
 	{
 		close(pipefd[1]);
