@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:20:13 by romain            #+#    #+#             */
-/*   Updated: 2024/03/14 10:59:02 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:53:06 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_open(char *file, int *fd, int flag)
 		*fd = open(file, O_RDONLY);
 	else if (flag == FLAG_WRITE)
 		*fd = open(file, O_TRUNC | O_CREAT | O_RDWR, 0644);
-	return(*fd);
+	return (*fd);
 }
 
 char	*ft_find_env_path(char **envp)
@@ -71,10 +71,10 @@ char	*ft_get_path(char *cmd, char **envp)
 	i = 0;
 	if (!sep_env_paths)
 		return (cmd);
-	while (sep_env_paths[i]) 
+	while (sep_env_paths[i])
 	{
 		tmp = ft_strjoin(sep_env_paths[i], "/");
-		cmd_full_path = ft_strjoin(tmp, cmd); // add the command
+		cmd_full_path = ft_strjoin(tmp, cmd);
 		free(tmp);
 		if (access(cmd_full_path, F_OK | X_OK) == 0)
 		{

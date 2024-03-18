@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:34:47 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 10:33:11 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:51:39 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
-typedef enum	e_err
+typedef enum e_err
 {
 	ERR_ARGC,
 	ERR_INFILE,
@@ -29,14 +29,14 @@ typedef enum	e_err
 	ERR_FORK,
 	ERR_EXEC,
 	ERR_HEREDOC
-}				t_err;
+}	t_err;
 
-typedef enum	e_mod
+typedef enum e_mod
 {
 	FLAG_READ,
 	FLAG_WRITE,
 	FLAG_HEREDOC
-}				t_mod;
+}	t_mod;
 
 int		err_msg(int err_id);
 int		ft_open(char *file, int *fd, int flag);

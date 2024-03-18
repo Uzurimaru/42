@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:17:14 by romain            #+#    #+#             */
-/*   Updated: 2024/03/12 17:46:11 by romain           ###   ########.fr       */
+/*   Updated: 2024/03/18 10:51:23 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
-typedef enum	e_err
+typedef enum e_err
 {
 	ERR_ARGC,
 	ERR_INFILE,
 	ERR_OUTFILE,
 	ERR_PIPE,
 	ERR_EXEC
-}				t_err;
+}	t_err;
 
-typedef enum	e_mod
+typedef enum e_mod
 {
 	FLAG_READ,
 	FLAG_WRITE
-}				t_mod;
+}	t_mod;
 
 int		err_msg(int err_id);
 int		ft_open(char *file, int *fd, int flag);
