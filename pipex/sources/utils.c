@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:20:13 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 10:53:06 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:13:17 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	err_msg(int err_id)
 		ft_putstr_fd("pipex: pipe failed\n", 2);
 	if (err_id == ERR_EXEC)
 		ft_putstr_fd("pipex: command not found: ", 2);
+	if (err_id == ERR_CMD)
+		ft_putstr_fd("pipex: need valid command\n", 2);
 	return (err_id);
 }
 
@@ -35,6 +37,15 @@ int	ft_open(char *file, int *fd, int flag)
 		*fd = open(file, O_TRUNC | O_CREAT | O_RDWR, 0644);
 	return (*fd);
 }
+void	close_and_wait(int pipefd[2], int filefd[2], pid_t pid[2])
+{
+	close(pipefd[0]);
+	close(pipefd[1]);
+	waitpid(pid[0], NULL, 0);
+	waitpid(pid[1], NULL, 0);
+	close(filefd[0]);
+	close(filefd[1]);
+}
 
 char	*ft_find_env_path(char **envp)
 {
@@ -42,6 +53,8 @@ char	*ft_find_env_path(char **envp)
 	int		j;
 	char	*envp_name;
 
+	if (!envp)
+		return (NULL);
 	i = 0;
 	while (envp[i])
 	{

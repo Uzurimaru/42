@@ -6,7 +6,7 @@
 #    By: romain <romain@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:18:08 by romain            #+#    #+#              #
-#    Updated: 2024/03/13 16:57:33 by romain           ###   ########.fr        #
+#    Updated: 2024/03/18 18:12:26 by romain           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT	:=	$(addprefix $(LIBPATH), $(LIBFTA))
 
 LIBFTEX	:=	$(LIBFT) $(CFLAGS)
 
-CC		:=	clang
+CC		:=	gcc
 
 SRCS_C	:=	pipex.c \
 				utils.c \

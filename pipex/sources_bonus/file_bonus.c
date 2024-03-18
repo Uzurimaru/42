@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:10:58 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 10:40:52 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:13:48 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ void	set_inf_outf_fds(int *filefd, int argc, char **argv, int arg_cursor)
 	if (fd_inf < 0)
 		exit(err_msg(ERR_INFILE));
 	if (fd_outf < 0)
+	{
+		close(filefd[0]);
 		exit(err_msg(ERR_OUTFILE));
+	}
 	*filefd = fd_inf;
 	*(filefd + 1) = fd_outf;
 }

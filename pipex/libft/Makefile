@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+         #
+#    By: romain <romain@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:30:27 by rwintgen          #+#    #+#              #
-#    Updated: 2024/02/17 11:53:32 by rwintgen         ###   ########.fr        #
+#    Updated: 2024/03/18 18:12:14 by romain           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ OBJS    = ${SRCS:.c=.o}
 
 NAME    = libft.a
 
-CC  = clang
+CC  = gcc
 
 AR    = ar rcs
 

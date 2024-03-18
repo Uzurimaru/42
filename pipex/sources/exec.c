@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 17:42:34 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 10:52:29 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:12:44 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void	ft_exec(char *cmd, char **envp)
 	char	*cmd_path;
 	char	**s_cmd;
 
+	if (!*cmd)
+	{
+		err_msg(ERR_CMD);
+		exit(ERR_CMD);
+	}
 	s_cmd = ft_split(cmd, ' ');
 	cmd_path = ft_get_path(s_cmd[0], envp);
 	if (execve(cmd_path, s_cmd, envp) == -1)

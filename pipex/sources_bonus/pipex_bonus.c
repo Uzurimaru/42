@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:34:20 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 13:39:20 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:14:13 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
-
-// clear && valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes --trace-children=yes ./pipex_bonus Makefile ls "cat -e" /dev/stdout
-// TODO infile open when no rights on outfile / outfile is folder
-// TODO segfault when launched with valgrind && env -i / PATH unset
 
 int	main(int argc, char **argv, char **envp)
 {

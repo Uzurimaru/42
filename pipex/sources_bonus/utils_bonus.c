@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:20:13 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 10:41:49 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:14:30 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ int	err_msg(int err_id)
 	if (err_id == ERR_FORK)
 		ft_putstr_fd("pipex: fork failed\n", 2);
 	if (err_id == ERR_EXEC)
-		ft_putstr_fd("pipex: command not found:\n", 2);
+		ft_putstr_fd("pipex: command not found: ", 2);
+	if (err_id == ERR_CMD)
+		ft_putstr_fd("pipex: need valid command\n", 2);
 	if (err_id == ERR_HEREDOC)
 		ft_putstr_fd("pipex: heredoc error\n", 2);
 	return (err_id);
@@ -76,7 +78,9 @@ char	*ft_get_path(char *cmd, char **envp)
 
 	sep_env_paths = ft_split(ft_find_env_path(envp), ':');
 	i = 0;
-	while (sep_env_paths[i])
+	if (!sep_env_paths)
+		return (cmd);
+	while (sep_env_paths && sep_env_paths[i])
 	{
 		tmp = ft_strjoin(sep_env_paths[i], "/");
 		cmd_full_path = ft_strjoin(tmp, cmd);

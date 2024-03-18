@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:34:47 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 10:51:39 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:11:49 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef enum e_err
 	ERR_PIPE,
 	ERR_FORK,
 	ERR_EXEC,
+	ERR_CMD,
 	ERR_HEREDOC
 }	t_err;
 

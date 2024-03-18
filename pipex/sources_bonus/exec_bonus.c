@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:13:29 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 13:31:05 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:13:34 by romain           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ static void	ft_exec_cmd(char *cmd, char **envp)
 	char	*path_to_cmd;
 	char	**s_cmd;
 
+	if (!*cmd)
+	{
+		err_msg(ERR_CMD);
+		exit(ERR_CMD);
+	}
 	s_cmd = ft_split(cmd, ' ');
 	path_to_cmd = ft_get_path(s_cmd[0], envp);
 	if (execve(path_to_cmd, s_cmd, envp) == -1)
@@ -33,6 +38,7 @@ static void	ft_exec_cmd(char *cmd, char **envp)
 		err_msg(ERR_EXEC);
 		ft_putendl_fd(s_cmd[0], 2);
 		ft_free_char_tab(s_cmd);
+		exit(ERR_EXEC);
 	}
 }
 
@@ -51,13 +57,14 @@ void	exec_piped_commands(char *cmd, char **envp, int *filefd, char **argv)
 		close(pipefd[1]);
 		dup2(pipefd[0], 0);
 		close(pipefd[0]);
+		wait(NULL);
 	}
 	else
 	{
-		close(filefd[1]);
 		close(pipefd[0]);
 		dup2(pipefd[1], 1);
 		close(pipefd[1]);
+		close(filefd[1]);
 		ft_exec_cmd(cmd, envp);
 	}
 }
