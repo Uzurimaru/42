@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:20:13 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 18:13:17 by romain           ###   ########.fr       */
+/*   Updated: 2024/03/19 09:45:07 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	ft_open(char *file, int *fd, int flag)
 		*fd = open(file, O_TRUNC | O_CREAT | O_RDWR, 0644);
 	return (*fd);
 }
+
 void	close_and_wait(int pipefd[2], int filefd[2], pid_t pid[2])
 {
 	close(pipefd[0]);

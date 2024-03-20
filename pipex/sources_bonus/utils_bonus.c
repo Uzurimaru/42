@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:20:13 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 18:14:30 by romain           ###   ########.fr       */
+/*   Updated: 2024/03/20 14:58:18 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,13 @@ char	*ft_get_path(char *cmd, char **envp)
 	}
 	ft_free_char_tab(sep_env_paths);
 	return (cmd);
+}
+
+void	ft_wait_all(void)
+{
+	int	status;
+
+	while (wait(&status) > 0)
+	{
+	}
 }

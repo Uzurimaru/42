@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:34:47 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 18:11:49 by romain           ###   ########.fr       */
+/*   Updated: 2024/03/20 14:21:02 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int		handle_heredoc(char **argv, int *filefd);
 void	set_inf_outf_fds(int *filefd, int argc, char **argv, int arg_cursor);
 void	exec_piped_commands(char *cmd, char **envp, int *filefd, char **argv);
 void	ft_exec_last(char *cmd, char **envp, int *filefd);
+void	ft_wait_all(void);
 
 #endif

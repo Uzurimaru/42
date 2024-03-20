@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romain <romain@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:34:20 by romain            #+#    #+#             */
-/*   Updated: 2024/03/18 18:14:13 by romain           ###   ########.fr       */
+/*   Updated: 2024/03/20 15:04:02 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ int	main(int argc, char **argv, char **envp)
 	if (!ft_strcmp(argv[1], "here_doc"))
 		unlink(".heredoc_buf");
 	ft_exec_last(argv[arg_cursor], envp, filefd);
+	// wait all
+	ft_wait_all();
 	return (0);
 }

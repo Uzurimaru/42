@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:34:33 by rwintgen          #+#    #+#             */
-/*   Updated: 2023/11/06 10:52:25 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/20 14:20:37 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	while (s && *s)
+	if (s)
 	{
-		ft_putchar_fd(*s, fd);
-		s++;
+		write(fd, s, ft_strlen(s));
 	}
 }
