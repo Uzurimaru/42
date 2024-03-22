@@ -6,7 +6,7 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:13:29 by romain            #+#    #+#             */
-/*   Updated: 2024/03/22 12:11:49 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:50:07 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	ft_exec(t_data data, int current, int fd_in, int fd_out)
 		err_free(data.filefd[0], data.filefd[1], data.argv, ERR_FORK);
 	else if (pid != 0)
 		return (0);
-	if (!data.argv[current])
+	if (!(*data.argv[current]))
 	{
-		err_msg(ERR_CMD);
+		err_free(fd_in, fd_out, data.argv, ERR_CMD);
 		exit(ERR_CMD);
 	}
 	redirect_i_o(fd_in, fd_out);
@@ -81,51 +81,3 @@ void	exec_piped_commands(int arg_cursor, t_data data)
 		cmd_fd_in = pipefd[0];
 	}
 }
-
-// static void	ft_exec_cmd(char *cmd, char **envp)
-// {
-// 	char	*path_to_cmd;
-// 	char	**s_cmd;
-
-// 	if (!*cmd)
-// 	{
-// 		err_msg(ERR_CMD);
-// 		exit(ERR_CMD);
-// 	}
-// 	s_cmd = ft_split(cmd, ' ');
-// 	path_to_cmd = ft_get_path(s_cmd[0], envp);
-// 	if (execve(path_to_cmd, s_cmd, envp) == -1)
-// 	{
-// 		err_msg(ERR_EXEC);
-// 		ft_putendl_fd(s_cmd[0], 2);
-// 		ft_free_char_tab(s_cmd);
-// 		exit(ERR_EXEC);
-// 	}
-// }
-
-// void	exec_piped_commands(char *cmd, char **envp, int *filefd, char **argv)
-// {
-// 	int		pipefd[2];
-// 	pid_t	pid;
-
-// 	if (pipe(pipefd) < 0)
-// 		err_free(filefd[0], filefd[1], argv, ERR_PIPE);
-// 	pid = fork();
-// 	if (pid < 0)
-// 		err_free(filefd[0], filefd[1], argv, ERR_FORK);
-// 	else if (pid != 0)
-// 	{
-// 		close(pipefd[1]);
-// 		dup2(pipefd[0], 0);
-// 		close(pipefd[0]);
-// 		// wait(NULL);
-// 	}
-// 	else
-// 	{
-// 		close(pipefd[0]);
-// 		dup2(pipefd[1], 1);
-// 		close(pipefd[1]);
-// 		close(filefd[1]);
-// 		ft_exec_cmd(cmd, envp);
-// 	}
-// }

@@ -6,11 +6,14 @@
 /*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:34:20 by romain            #+#    #+#             */
-/*   Updated: 2024/03/22 12:11:39 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/22 12:50:28 by rwintgen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex_bonus.h"
+
+// TODO Makefile "" "" outfile -> FDs open
+// TODO Makefile cat cat outfile -> FDs open
 
 void	init_data(t_data *data, int argc, char **argv, char **envp)
 {
