@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: deymons <deymons@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:34:20 by romain            #+#    #+#             */
-/*   Updated: 2024/03/22 12:50:28 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:29:00 by deymons          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	init_data(t_data *data, int argc, char **argv, char **envp)
 	data->envp = envp;
 	data->filefd[0] = -1;
 	data->filefd[1] = -1;
+	data->pipefd[0] = -1;
+	data->pipefd[1] = -1;
 }
 
 int	main(int argc, char **argv, char **envp)

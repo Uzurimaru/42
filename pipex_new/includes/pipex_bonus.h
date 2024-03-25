@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwintgen <rwintgen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: deymons <deymons@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 18:34:47 by romain            #+#    #+#             */
-/*   Updated: 2024/03/22 10:57:06 by rwintgen         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:28:52 by deymons          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef enum e_mod
 typedef struct s_data
 {
 	int		filefd[2];
+	int		pipefd[2];
 
 	int		argc;
 	char	**argv;
